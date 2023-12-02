@@ -1,8 +1,8 @@
 @echo off
 
-SET CLASH_DIR=D:\Apps\Clash.Meta
-SET TMP_DIR=D:\Apps\Clash.Meta\tmp
-SET METACUBEXD_DIR=D:\Apps\Clash.Meta\metacubexd
+SET CLASH_DIR=D:\Apps\Mihomo
+SET TMP_DIR=D:\Apps\Mihomo\tmp
+SET METACUBEXD_DIR=D:\Apps\Mihomo\metacubexd
 SET FILE_NAME=compressed-dist.tgz
 
 SET METACUBEXD_URL="https://github.com/MetaCubeX/metacubexd/releases/latest/download/compressed-dist.tgz"

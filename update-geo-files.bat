@@ -1,7 +1,7 @@
 @echo off
 
-SET CLASH_DIR=D:\Apps\Clash.Meta
-SET TMP_DIR=D:\Apps\Clash.Meta\tmp
+SET CLASH_DIR=D:\Apps\Mihomo
+SET TMP_DIR=D:\Apps\Mihomo\tmp
 
 @REM SET GEOIP_URL="https://github.com/Loyalsoldier/v2ray-rules-dat/raw/release/geoip.dat"
 @REM SET GEOSITE_URL="https://github.com/Loyalsoldier/v2ray-rules-dat/raw/release/geosite.dat"
