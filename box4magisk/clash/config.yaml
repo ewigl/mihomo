@@ -56,7 +56,7 @@ proxy-groups:
     use:
       - Standalone
       - Airports
-    filter: "TW|🇨🇳"
+    filter: "TW|🇨🇳|🇹🇼"
 
   - name: 🇸🇬 Singapore
     type: select

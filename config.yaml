@@ -66,7 +66,7 @@ proxy-groups:
     use:
       - Standalone
       - Airports
-    filter: "TW|🇨🇳"
+    filter: "TW|🇨🇳|🇹🇼"
 
   - name: 🇸🇬 Singapore
     type: select
@@ -95,6 +95,30 @@ proxy-groups:
       - 🇨🇳 Taiwan
       - 🚀
       - DIRECT
+      - 🇺🇸 America
+      - 🇭🇰 HongKong
+      - 🇸🇬 Singapore
+      - 🇯🇵 Japan
+      - 🇺🇳 All
+
+  - name: 📺Bilibili
+    type: select
+    proxies:
+      - DIRECT
+      - 🚀
+      - 🇺🇸 America
+      - 🇭🇰 HongKong
+      - 🇨🇳 Taiwan
+      - 🇸🇬 Singapore
+      - 🇯🇵 Japan
+      - 🇺🇳 All
+
+  - name: 🔞Pornhub
+    type: select
+    proxies:
+      - 🚀
+      - DIRECT
+      - 🇨🇳 Taiwan
       - 🇺🇸 America
       - 🇭🇰 HongKong
       - 🇸🇬 Singapore
@@ -249,6 +273,20 @@ rule-providers:
     path: ./ruleset/bahamut.yaml
     interval: 86400
 
+  bilibili:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Bilibili.yaml"
+    path: ./ruleset/bilibili.yaml
+    interval: 86400
+
+  pornhub:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Pornhub.yaml"
+    path: ./ruleset/pornhub.yaml
+    interval: 86400
+
   steam-cn:
     type: http
     behavior: classical
@@ -276,6 +314,8 @@ rules:
   - RULE-SET,custom-proxy,🚀
   # extended
   - RULE-SET,bahamut,📺Bahamut
+  - RULE-SET,bilibili,📺Bilibili
+  - RULE-SET,pornhub,🔞Pornhub
   - RULE-SET,steam-cn,DIRECT
   - RULE-SET,telegram,💬Telegram
   - RULE-SET,youtube,📹YouTube
