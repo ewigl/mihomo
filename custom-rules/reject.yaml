@@ -1,6 +1,6 @@
 payload:
-  - "ic.adobe.io"
-  - "cc-api-data.adobe.io"
-  - "p13n.adobe.io"
-  - "7sj9n87sls.adobe.io"
-  - "b5kbg2ggog.adobe.io"
+  - "+.ic.adobe.io"
+  - "+.cc-api-data.adobe.io"
+  - "+.p13n.adobe.io"
+  - "+.7sj9n87sls.adobe.io"
+  - "+.b5kbg2ggog.adobe.io"
