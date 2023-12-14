@@ -265,6 +265,11 @@ rule-providers:
     behavior: domain
     path: ./custom-rules/proxy.yaml
 
+  custom-reject:
+    type: file
+    behavior: domain
+    path: ./custom-rules/reject.yaml
+
   # extended rules https://github.com/ACL4SSR/ACL4SSR/tree/master/Clash/Providers/Ruleset
   bahamut:
     type: http
@@ -310,6 +315,7 @@ rule-providers:
 
 rules:
   # custom
+  - RULE-SET,custom-reject,REJECT
   - RULE-SET,custom-direct,DIRECT
   - RULE-SET,custom-proxy,🚀
   # extended
