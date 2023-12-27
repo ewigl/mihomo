@@ -7,7 +7,12 @@ on:
 jobs:
   update-geo-files:
     name: Update Geo Files
+
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -17,7 +22,14 @@ jobs:
           wget https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat -o GeoIP.dat
           wget https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat -o GeoSite.dat
 
-      - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v5
+      - name: Commit files
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add GeoIP.dat GeoSite.dat
+          git commit -m "Update Geo Files"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
         with:
-          commit_message: update geo files
+          github_token: ${{ secrets.GITHUB_TOKEN }}
