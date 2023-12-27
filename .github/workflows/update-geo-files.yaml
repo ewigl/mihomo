@@ -24,8 +24,8 @@ jobs:
 
       - name: Commit files
         run: |
-          git config user.name ${{ secrets.USER_NAME }}
-          git config user.email ${{ secrets.USER_EMAIL }}
+          git config user.name "github actions"
+          git config user.email "actions@github.com"
           git add GeoIP.dat GeoSite.dat
           git commit -m "Update Geo Files"
 
