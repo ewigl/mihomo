@@ -24,12 +24,11 @@ jobs:
 
       - name: Commit files
         run: |
-          git config --local user.name ${{ secrets.USER_NAME }}
-          git config --local user.email ${{ secrets.USER_EMAIL }}
+          git config user.name ${{ secrets.USER_NAME }}
+          git config user.email ${{ secrets.USER_EMAIL }}
           git add GeoIP.dat GeoSite.dat
           git commit -m "Update Geo Files"
 
       - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.TOKEN }}
+        run: |
+          git push
