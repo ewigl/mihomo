@@ -1,0 +1,22 @@
+name: Update Geo Files
+on:
+  schedule:
+    - cron: "0 0 * * 0"
+
+jobs:
+  update-geo-files:
+    name: Update Geo Files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download geo files
+        run: |
+          wget https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat -o GeoIP.dat
+          wget https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat -o GeoSite.dat
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: update geo files
