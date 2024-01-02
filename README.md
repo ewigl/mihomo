@@ -40,6 +40,8 @@
 
 in task manager, terminate `mihomo-windows-amd64.exe`.
 
+or use `mihomo.stop.bat` with admin permission.
+
 **box4magisk usage**
 
 0.  flash box4magisk, no reboot.
