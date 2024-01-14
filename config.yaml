@@ -45,6 +45,9 @@ proxy-groups:
       - 🇨🇳 Taiwan
       - 🇸🇬 Singapore
       - 🇯🇵 Japan
+      - 📄 Standalone
+      - ✈ Airports
+      - 🖨 Others
       - 🇺🇳 All
 
   - name: 🇺🇸 America
@@ -52,6 +55,7 @@ proxy-groups:
     use:
       - Standalone
       - Airports
+      - Others
     filter: "US|🇺🇸"
 
   - name: 🇭🇰 HongKong
@@ -59,6 +63,7 @@ proxy-groups:
     use:
       - Standalone
       - Airports
+      - Others
     filter: "HK|🇭🇰"
 
   - name: 🇨🇳 Taiwan
@@ -66,6 +71,7 @@ proxy-groups:
     use:
       - Standalone
       - Airports
+      - Others
     filter: "TW|🇨🇳|🇹🇼"
 
   - name: 🇸🇬 Singapore
@@ -73,6 +79,7 @@ proxy-groups:
     use:
       - Standalone
       - Airports
+      - Others
     filter: "SG|🇸🇬"
 
   - name: 🇯🇵 Japan
@@ -80,14 +87,30 @@ proxy-groups:
     use:
       - Standalone
       - Airports
+      - Others
     filter: "JP|🇯🇵"
+
+  - name: 📄 Standalone
+    type: select
+    use:
+      - Standalone
+
+  - name: ✈ Airports
+    type: select
+    use:
+      - Airports
+
+  - name: 🖨 Others
+    type: select
+    use:
+      - Others
 
   - name: 🇺🇳 All
     type: select
     use:
       - Standalone
       - Airports
-      # - Others
+      - Others
 
   - name: 📺Bahamut
     type: select
@@ -106,6 +129,18 @@ proxy-groups:
     proxies:
       - DIRECT
       - 🚀
+      - 🇺🇸 America
+      - 🇭🇰 HongKong
+      - 🇨🇳 Taiwan
+      - 🇸🇬 Singapore
+      - 🇯🇵 Japan
+      - 🇺🇳 All
+
+  - name: ⓂMicrosoft
+    type: select
+    proxies:
+      - 🚀
+      - DIRECT
       - 🇺🇸 America
       - 🇭🇰 HongKong
       - 🇨🇳 Taiwan
@@ -161,6 +196,14 @@ proxy-providers:
   Airports:
     type: file
     path: ./proxies/Airports.yaml
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 7200
+
+  Others:
+    type: file
+    path: ./proxies/Others.yaml
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
@@ -285,6 +328,13 @@ rule-providers:
     path: ./ruleset/bilibili.yaml
     interval: 86400
 
+  microsoft:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Microsoft.yaml"
+    path: ./ruleset/microsoft.yaml
+    interval: 86400
+
   pornhub:
     type: http
     behavior: classical
@@ -321,6 +371,7 @@ rules:
   # extended
   - RULE-SET,bahamut,📺Bahamut
   - RULE-SET,bilibili,📺Bilibili
+  - RULE-SET,microsoft,ⓂMicrosoft
   - RULE-SET,pornhub,🔞Pornhub
   - RULE-SET,steam-cn,DIRECT
   - RULE-SET,telegram,💬Telegram
