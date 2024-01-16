@@ -54,4 +54,4 @@ or use `mihomo.stop.bat` with admin permission.
 
 **Preview:**
 
-![Preview](https://raw.githubusercontent.com/ewigl/mihomo/main/images/01.png)
+![Preview](https://raw.githubusercontent.com/ewigl/mihomo/main/images/0.png)
