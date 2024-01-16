@@ -1,5 +1,7 @@
 #### Mihomo Config
 
+[![CN](https://img.shields.io/badge/lang-zh-Hans)](https://github.com/ewigl/mihomo/blob/master/README.CN.md)
+
 [Mihomo](https://github.com/MetaCubeX/mihomo), Windows Tun
 
 [Box4Magisk](https://github.com/CHIZI-0618/box4magisk), Android Tproxy
@@ -19,9 +21,9 @@
 - update-geo-files.bat
 - update-metacubexd.bat
 
-**Usage:**
+**Windows Tun Mode Usage:**
 
-1. Clone the repository using git, or just click Code -> Download ZIP, then Extract。
+1. Clone the repository using git, or just click Code -> Download ZIP, then Extract.
 2. Modify `proxy-groups`, `proxy-providers`, and maybe something else in `config.yaml`.
 3. Change Mihomo's core path in `mihomo.startup.vbs`
 4. Change paths in `update-geo-files.bat` 、 `update-metacubexd.bat`.
@@ -34,7 +36,7 @@
 1. Open Windows Task Scheduler.
 2. Import `Mihomo StartUp.xml`, or NEW a task to run `mihomo.startup.vbs`.
 3. Change task's name, file path, triger, condition...
-4. In "General" tab, tick 'admin/higherst permission', save & done.
+4. In "General/Common" tab, tick 'admin/higherst permission', save & done.
 
 **End Mihomo:**
 
@@ -42,7 +44,7 @@ Open Task Manager, terminate `mihomo-windows-amd64.exe`.
 
 or use `mihomo.stop.bat` with admin permission.
 
-**box4magisk usage:**
+**Box4magisk Tproxy usage:**
 
 0.  Flash box4magisk, no reboot.
 1.  Modify `proxy-groups`, `proxy-providers`, and maybe something else in `box4magisk/clash/config.yaml`.
