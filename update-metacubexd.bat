@@ -5,7 +5,7 @@ SET TMP_DIR=%~dp0\tmp
 SET METACUBEXD_DIR=%~dp0\metacubexd
 SET FILE_NAME=compressed-dist.tgz
 
-SET METACUBEXD_URL="https://github.com/MetaCubeX/metacubexd/releases/latest/download/compressed-dist.tgz"
+SET METACUBEXD_URL="https://github.com/MetaCubeX/metacubexd/releases/latest/download/%FILE_NAME%"
 
 echo 0. Downloading latest metacubexd zip file...
 curl -L --output-dir %TMP_DIR% -o %FILE_NAME% %METACUBEXD_URL%
