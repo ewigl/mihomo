@@ -51,3 +51,7 @@ or use `mihomo.stop.bat` with admin permission.
 2.  Copy files from `box4magisk` to `/data/adb/box`.
 3.  Copy `custom-rules`, `metacubexd`, `(proxies)`, `GeoIP.dat`, `GeoSite.dat` to `/data/adb/box/calsh`.
 4.  Reboot.
+
+**Preview:**
+
+![Preview](https://raw.githubusercontent.com/ewigl/mihomo/main/images/01.png)

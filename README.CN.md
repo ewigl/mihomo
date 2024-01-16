@@ -49,3 +49,7 @@
 2.  复制 `box4magisk` 中的文件到 `/data/adb/box`.
 3.  复制 `custom-rules`, `metacubexd`, `(proxies)`, `GeoIP.dat`, `GeoSite.dat` 到 `/data/adb/box/calsh`.
 4.  重启
+
+**预览:**
+
+![Preview](https://raw.githubusercontent.com/ewigl/mihomo/main/images/01.png)
