@@ -2,13 +2,13 @@
 
 [Mihomo](https://github.com/MetaCubeX/mihomo), Windows Tun 模式
 
-[Box4Magisk](https://github.com/CHIZI-0618/box4magisk), Android Tproxy 模式
+[Box For Root](https://github.com/taamarin/box_for_magisk), Android Tun 模式
 
 [Mihomo Docs](https://wiki.metacubex.one/config/), 参考文档
 
 **目录结构:**
 
-- box4magisk
+- box_for_root
 - custom-rules - 自定义规则
 - metacubexd - [Metacubexd](https://github.com/metacubex/metacubexd)
 
@@ -42,11 +42,11 @@
 
 或使用管理员权限运行 `mihomo.stop.bat`。
 
-**box4magisk 使用方法:**
+**Box For Root 使用方法:**
 
-0.  刷入 box4magisk，无需重启。
-1.  按需修改 `box4magisk/clash/config.yaml` 中的 `proxy-groups`, `proxy-providers` 等配置。
-2.  复制 `box4magisk` 中的文件到 `/data/adb/box`.
+0.  刷入 Box For Root，无需重启。
+1.  按需修改 `box_for_root/clash/config.yaml` 中的 `proxy-groups`, `proxy-providers` 等配置。
+2.  复制 `box_for_root` 中的文件到 `/data/adb/box`.
 3.  复制 `custom-rules`, `metacubexd`, `(proxies)`, `GeoIP.dat`, `GeoSite.dat` 到 `/data/adb/box/calsh`.
 4.  重启
 

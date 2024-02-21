@@ -4,13 +4,13 @@
 
 [Mihomo](https://github.com/MetaCubeX/mihomo), Windows Tun
 
-[Box4Magisk](https://github.com/CHIZI-0618/box4magisk), Android Tproxy
+[Box For Root](https://github.com/taamarin/box_for_magisk), Android Tun
 
 [Mihomo Docs](https://wiki.metacubex.one/config/), for reference
 
 **Dirs:**
 
-- box4magisk
+- box_for_root
 - custom-rules
 - metacubexd - [Metacubexd](https://github.com/metacubex/metacubexd)
 
@@ -44,11 +44,11 @@ Open Task Manager, terminate `mihomo-windows-amd64.exe`.
 
 or use `mihomo.stop.bat` with admin permission.
 
-**Box4magisk Tproxy usage:**
+**Box For Root tun usage:**
 
-0.  Flash box4magisk, no reboot.
-1.  Modify `proxy-groups`, `proxy-providers`, and maybe something else in `box4magisk/clash/config.yaml`.
-2.  Copy files from `box4magisk` to `/data/adb/box`.
+0.  Flash box_for_root, no reboot.
+1.  Modify `proxy-groups`, `proxy-providers`, and maybe something else in `box_for_root/clash/config.yaml`.
+2.  Copy files from `box_for_root` to `/data/adb/box`.
 3.  Copy `custom-rules`, `metacubexd`, `(proxies)`, `GeoIP.dat`, `GeoSite.dat` to `/data/adb/box/calsh`.
 4.  Reboot.
 
