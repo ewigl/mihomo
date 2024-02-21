@@ -10,7 +10,7 @@ log-level: warning
 
 ipv6: false
 
-external-controller: :9090
+external-controller: localhost:9090
 external-ui: metacubexd
 
 geodata-mode: true
