@@ -2,9 +2,6 @@
 
 SET PROCESS_NAME=mihomo-windows-amd64.exe
 
-echo Stop Mihomo ?
-pause
-
 tasklist | findstr "%PROCESS_NAME%"
 
 if ERRORLEVEL 1 (
