@@ -1,21 +1,17 @@
+#
 mixed-port: 8486
 
-allow-lan: false
-
-find-process-mode: strict
-
 mode: rule
-
-log-level: warning
+allow-lan: true
 
 ipv6: false
 
-external-controller: localhost:9090
-external-ui: metacubexd
+log-level: warning
 
 geodata-mode: true
-unified-delay: true
-tcp-concurrent: true
+
+external-controller: localhost:9090
+external-ui: metacubexd
 
 profile:
   store-selected: true
@@ -24,14 +20,14 @@ profile:
 tun:
   enable: true
   stack: system
-  dns-hijack:
-    - any:53
   auto-route: true
   auto-detect-interface: true
+  dns-hijack:
+    - any:53
 
 dns:
   enable: true
-  ipv6: false
+  prefer-h3: true
   listen: :53
   enhanced-mode: fake-ip
   fake-ip-range: 16.0.0.1/8
