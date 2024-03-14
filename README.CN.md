@@ -21,7 +21,7 @@
 
 **Windows Tun 模式使用:**
 
-1. 使用 git 克隆仓库， 或点击 Code -> Download ZIP， 解压缩。
+1. 点击 Code -> Download ZIP， 解压缩。
 2. 按需修改 `config.yaml` 中的 `proxy-groups`, `proxy-providers` 等配置。
 3. 修改 `mihomo.startup.vbs` 中的 Mihomo 内核路径。
 4. 按需修改 `update-geo-files.bat` 、 `update-metacubexd.bat` 中的路径。

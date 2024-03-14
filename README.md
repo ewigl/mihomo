@@ -23,7 +23,7 @@
 
 **Windows Tun Mode Usage:**
 
-1. Clone the repository using git, or just click Code -> Download ZIP, then Extract.
+1. Click Code -> Download ZIP, then Extract.
 2. Modify `proxy-groups`, `proxy-providers`, and maybe something else in `config.yaml`.
 3. Change Mihomo's core path in `mihomo.startup.vbs`
 4. Change paths in `update-geo-files.bat` 、 `update-metacubexd.bat`.
