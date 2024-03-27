@@ -22,9 +22,9 @@
 **Windows Tun 模式使用:**
 
 1. 点击 Code -> Download ZIP， 解压缩。
-2. 按需修改 `config.yaml` 中的 `proxy-groups`, `proxy-providers` 等配置。
-3. 修改 `mihomo.startup.vbs` 中的 Mihomo 内核路径。
-4. 按需修改 `update-geo-files.bat` 、 `update-metacubexd.bat` 中的路径。
+2. 修改 `config.yaml` 中的 `proxy-groups`, `proxy-providers` 等配置。（可选）
+3. 修改 `mihomo.startup.vbs` 中的 Mihomo 内核路径。（可选）
+4. 修改 `update-geo-files.bat` 、 `update-metacubexd.bat` 中的路径。（可选）
 5. 修改 `mihomo-windows-amd64.exe` 的兼容性设置，勾选“以管理员权限身份运行此程序”。
 6. 双击 `mihomo.startup.vbs` 运行，允许管理员权限
 7. 控制台：[http://localhost:9090/ui](http://localhost:9090/ui)

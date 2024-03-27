@@ -24,9 +24,9 @@
 **Windows Tun Mode Usage:**
 
 1. Click Code -> Download ZIP, then Extract.
-2. Modify `proxy-groups`, `proxy-providers`, and maybe something else in `config.yaml`.
-3. Change Mihomo's core path in `mihomo.startup.vbs`
-4. Change paths in `update-geo-files.bat` 、 `update-metacubexd.bat`.
+2. Modify `proxy-groups`, `proxy-providers`, and maybe something else in `config.yaml`. (optional)
+3. Change Mihomo's core path in `mihomo.startup.vbs`. (optional)
+4. Change paths in `update-geo-files.bat` 、 `update-metacubexd.bat`. (optional)
 5. Modify `mihomo-windows-amd64.exe`'s compatiable settings, tick "admin permission".
 6. Double click `mihomo.startup.vbs` to run, allow admin permission.
 7. Controller dashboard：[http://localhost:9090/ui](http://localhost:9090/ui)
