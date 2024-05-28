@@ -1,0 +1,291 @@
+#
+mixed-port: 8486
+
+ipv6: false
+
+mode: rule
+allow-lan: true
+
+log-level: error
+
+geodata-mode: true
+
+external-controller: :9090
+external-ui: metacubexd
+secret: "998486"
+
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+tun:
+  enable: true
+  stack: system
+  auto-route: true
+  auto-detect-interface: true
+  dns-hijack:
+    - any:53
+
+dns:
+  enable: true
+  prefer-h3: true
+  listen: :53
+  enhanced-mode: fake-ip
+  fake-ip-range: 16.0.0.1/8
+
+proxy-groups:
+  - name: 🚀
+    type: select
+    proxies:
+      - 🇺🇸 美国
+      - 🇭🇰 香港
+      - 🇨🇳 台湾
+      - 🇸🇬 狮城
+      - 🇯🇵 日本
+      - 🇺🇳 全球
+
+  # Regions
+  - name: 🇺🇸 美国
+    type: select
+    use:
+      - Local
+      # - Subscription
+    filter: "US|🇺🇸|美国"
+
+  - name: 🇭🇰 香港
+    type: select
+    use:
+      - Local
+      # - Subscription
+    filter: "HK|🇭🇰|香港"
+
+  - name: 🇨🇳 台湾
+    type: select
+    use:
+      - Local
+      # - Subscription
+    filter: "TW|🇨🇳|🇹🇼|台湾"
+
+  - name: 🇸🇬 狮城
+    type: select
+    use:
+      - Local
+      # - Subscription
+    filter: "SG|🇸🇬|新加坡|狮城"
+
+  - name: 🇯🇵 日本
+    type: select
+    use:
+      - Local
+      # - Subscription
+    filter: "JP|🇯🇵|日本"
+
+  - name: 🇺🇳 全球
+    type: select
+    use:
+      - Local
+      # - Subscription
+
+  # Services
+  - name: 📺Bahamut
+    type: select
+    proxies:
+      - 🇨🇳 台湾
+      - 🚀
+      - DIRECT
+      - 🇺🇸 美国
+      - 🇭🇰 香港
+      - 🇸🇬 狮城
+      - 🇯🇵 日本
+      - 🇺🇳 全球
+
+  - name: ⓂMicrosoft
+    type: select
+    proxies:
+      - DIRECT
+      - 🚀
+      - 🇺🇸 美国
+      - 🇭🇰 香港
+      - 🇨🇳 台湾
+      - 🇸🇬 狮城
+      - 🇯🇵 日本
+      - 🇺🇳 全球
+
+  - name: 📹YouTube
+    type: select
+    proxies:
+      - 🚀
+      - DIRECT
+      - 🇺🇸 美国
+      - 🇭🇰 香港
+      - 🇨🇳 台湾
+      - 🇸🇬 狮城
+      - 🇯🇵 日本
+      - 🇺🇳 全球
+
+proxy-providers:
+  Local:
+    type: file
+    path: ./proxies/Local.yaml
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 7200
+
+  # Subscription:
+  #   type: http
+  #   # your subscription url here
+  #   url: https://your.subscription.url
+  #   path: ./proxies/Subscription.yaml
+  #   health-check:
+  #     enable: true
+  #     url: http://www.gstatic.com/generate_204
+  #     interval: 7200
+
+rule-providers:
+  # Clash Rules https://github.com/Loyalsoldier/clash-rules
+  icloud:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/icloud.txt"
+    path: ./ruleset/icloud.yaml
+    interval: 86400
+
+  apple:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/apple.txt"
+    path: ./ruleset/apple.yaml
+    interval: 86400
+
+  proxy:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt"
+    path: ./ruleset/proxy.yaml
+    interval: 86400
+
+  direct:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/direct.txt"
+    path: ./ruleset/direct.yaml
+    interval: 86400
+
+  private:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt"
+    path: ./ruleset/private.yaml
+    interval: 86400
+
+  gfw:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt"
+    path: ./ruleset/gfw.yaml
+    interval: 86400
+
+  tld-not-cn:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/tld-not-cn.txt"
+    path: ./ruleset/tld-not-cn.yaml
+    interval: 86400
+
+  telegramcidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt"
+    path: ./ruleset/telegramcidr.yaml
+    interval: 86400
+
+  cncidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/cncidr.txt"
+    path: ./ruleset/cncidr.yaml
+    interval: 86400
+
+  lancidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/lancidr.txt"
+    path: ./ruleset/lancidr.yaml
+    interval: 86400
+
+  applications:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/applications.txt"
+    path: ./ruleset/applications.yaml
+    interval: 86400
+
+  # custom-rules local
+  custom-direct:
+    type: file
+    behavior: domain
+    path: ./custom-rules/direct.yaml
+
+  custom-proxy:
+    type: file
+    behavior: domain
+    path: ./custom-rules/proxy.yaml
+
+  custom-reject:
+    type: file
+    behavior: domain
+    path: ./custom-rules/reject.yaml
+
+  # extended rules https://github.com/ACL4SSR/ACL4SSR/tree/master/Clash/Providers/Ruleset
+  bahamut:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Bahamut.yaml"
+    path: ./ruleset/bahamut.yaml
+    interval: 86400
+
+  microsoft:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Microsoft.yaml"
+    path: ./ruleset/microsoft.yaml
+    interval: 86400
+
+  steam-cn:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/SteamCN.yaml"
+    path: ./ruleset/steam-cn.yaml
+    interval: 86400
+
+  youtube:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/YouTube.yaml"
+    path: ./ruleset/youtube.yaml
+    interval: 86400
+
+rules:
+  # custom
+  - RULE-SET,custom-reject,REJECT
+  - RULE-SET,custom-direct,DIRECT
+  - RULE-SET,custom-proxy,🚀
+  # extended
+  - RULE-SET,bahamut,📺Bahamut
+  - RULE-SET,microsoft,ⓂMicrosoft
+  - RULE-SET,steam-cn,DIRECT
+  - RULE-SET,youtube,📹YouTube
+  # Clash Rules whitelist
+  - RULE-SET,applications,DIRECT
+  - RULE-SET,private,DIRECT
+  - RULE-SET,icloud,DIRECT
+  - RULE-SET,apple,DIRECT
+  - RULE-SET,direct,DIRECT
+  - RULE-SET,lancidr,DIRECT
+  - RULE-SET,cncidr,DIRECT
+  - RULE-SET,proxy,🚀
+  - RULE-SET,telegramcidr,🚀
+  - GEOIP,LAN,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,🚀
