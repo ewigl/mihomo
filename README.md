@@ -1,4 +1,4 @@
-## Mihomo Config
+## Mihomo Tun
 
 Detailed documentation:
 
@@ -36,5 +36,4 @@ Detailed documentation:
 ├─ruleset
 │      proxy.yaml
 │      ...
-└─tmp
 ```
