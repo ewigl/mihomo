@@ -139,7 +139,7 @@ if not exist %METACUBEXD_DIR% (
     mkdir %METACUBEXD_DIR%
     echo #### Metacubexd dir created.
 ) else (
-    mv %METACUBEXD_DIR% %TMP_DIR%\metacubexd.bak
+    rmdir /S /Q %METACUBEXD_DIR%
     mkdir %METACUBEXD_DIR%
 )
 
