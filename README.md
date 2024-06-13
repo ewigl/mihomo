@@ -10,6 +10,7 @@
 1. 下载 [Mihomo Core](https://github.com/MetaCubeX/mihomo/releases)。
 2. 在[这里](https://github.com/Loyalsoldier/v2ray-rules-dat/releases)下载 `GeoIP.dat` 、 `GeoSite.dat`。
 3. 在[这里](https://github.com/MetaCubeX/metacubexd/releases)下载 `metacubexd`。
+4. 仅 Android，需要[Box for Root](https://github.com/taamarin/box_for_magisk/releases)。
 
 ### 文件结构示例 Windows:
 
