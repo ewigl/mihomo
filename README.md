@@ -1,39 +1,58 @@
 ## Mihomo Tun
 
-Detailed documentation:
+文档:
 
 [![EN](https://img.shields.io/badge/lang-en--US-blue)](https://ewigl.github.io/notes/en/posts/202404/mihomo-tun-guide/)
 [![ZH](https://img.shields.io/badge/lang-zh--CN-green)](https://ewigl.github.io/notes/posts/202404/mihomo-tun-guide/)
 
-### Prerequisites:
+### 前置:
 
-1. Download [Mihomo](https://github.com/MetaCubeX/mihomo/releases).
-2. Download `GeoIP.dat` and `GeoSite.dat` from [here](https://github.com/Loyalsoldier/v2ray-rules-dat/releases) or use updater.bat to download.
-3. Download `metacubexd` from [here](https://github.com/MetaCubeX/metacubexd/releases) or use updater.bat to download.
+1. 下载 [Mihomo Core](https://github.com/MetaCubeX/mihomo/releases)。
+2. 在[这里](https://github.com/Loyalsoldier/v2ray-rules-dat/releases)下载 `GeoIP.dat` 、 `GeoSite.dat`。
+3. 在[这里](https://github.com/MetaCubeX/metacubexd/releases)下载 `metacubexd`。
 
-### Folder Structure:
+### 文件结构示例 Windows:
 
 ```
-│  config.yaml
-│  GeoIP.dat
-│  GeoSite.dat
-│  Mihomo StartUp.xml
-│  mihomo-windows-amd64.exe
-│  mihomo.startup.vbs
-│  mihomo.stop.bat
-│  README.md
-│  updater.bat
-├─custom-rules
-│      direct.yaml
-│      proxy.yaml
-│      reject.yaml
-├─metacubexd
-│      index.html
-│      ...
-├─proxies
-│      Local.yaml
-│      ...
-├─ruleset
-│      proxy.yaml
-│      ...
+.
+└── D:/Apps/Mihomo/
+    ├── config.yaml
+    ├── GeoIP.dat
+    ├── GeoSite.dat
+    ├── Mihomo StartUp.xml
+    ├── mihomo-windows-amd64.exe
+    ├── mihomo.startup.vbs
+    ├── mihomo.stop.bat
+    ├── README.md
+    ├── updater.bat
+    ├── custom-rules/
+    │   ├── direct.yaml
+    │   ├── proxy.yaml
+    │   └── reject.yaml
+    ├── metacubexd/
+    │   ├── index.html
+    │   └── ...
+    ├── proxies/
+    │   ├── Local.yaml
+    │   └── ...
+    └── ruleset/
+        ├── proxy.yaml
+        └── ...
+```
+
+### 文件结构示例 Android:
+
+```
+.
+└── /data/adb/box/
+    ├── bin/
+    │   └── xclash/
+    │       └── mihomo
+    ├── clash/
+    │   ├── config.yaml
+    │   ├── GeoIP.dat
+    │   └── GeoSite.dat
+    ├── metacubexd/
+    ├── proxies/
+    └── ruleset/
 ```
