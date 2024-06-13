@@ -49,11 +49,11 @@
     ├── bin/
     │   └── xclash/
     │       └── mihomo
-    ├── clash/
-    │   ├── config.yaml
-    │   ├── GeoIP.dat
-    │   └── GeoSite.dat
-    ├── metacubexd/
-    ├── proxies/
-    └── ruleset/
+    └── clash/
+        ├── metacubexd/
+        ├── proxies/
+        ├── ruleset/
+        ├── config.yaml
+        ├── GeoIP.dat
+        └── GeoSite.dat
 ```
