@@ -265,7 +265,7 @@ rule-providers:
     type: http
     behavior: classical
     url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/BilibiliHMT.yaml"
-    path: ./ruleset/bahamut.yaml
+    path: ./ruleset/bilibiliHMT.yaml
     interval: 86400
 
   microsoft:
