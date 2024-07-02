@@ -6,9 +6,13 @@ ipv6: false
 mode: rule
 allow-lan: true
 
-log-level: error
+log-level: warning
 
 geodata-mode: true
+
+geox-url:
+  geoip: "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat"
+  geosite: "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat"
 
 external-controller: :9090
 external-ui: metacubexd
@@ -95,6 +99,18 @@ proxy-groups:
       - DIRECT
       - 🇺🇸 美国
       - 🇭🇰 香港
+      - 🇸🇬 狮城
+      - 🇯🇵 日本
+      - 🇺🇳 全球
+
+  - name: 📺BilibiliHMT
+    type: select
+    proxies:
+      - 🇭🇰 香港
+      - 🇨🇳 台湾
+      - 🚀
+      - DIRECT
+      - 🇺🇸 美国
       - 🇸🇬 狮城
       - 🇯🇵 日本
       - 🇺🇳 全球
@@ -245,6 +261,13 @@ rule-providers:
     path: ./ruleset/bahamut.yaml
     interval: 86400
 
+  bilibiliHMT:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/BilibiliHMT.yaml"
+    path: ./ruleset/bahamut.yaml
+    interval: 86400
+
   microsoft:
     type: http
     behavior: classical
@@ -273,6 +296,7 @@ rules:
   - RULE-SET,custom-proxy,🚀
   # extended
   - RULE-SET,bahamut,📺Bahamut
+  - RULE-SET,bilibiliHMT,📺BilibiliHMT
   - RULE-SET,microsoft,ⓂMicrosoft
   - RULE-SET,steam-cn,DIRECT
   - RULE-SET,youtube,📹YouTube
