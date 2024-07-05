@@ -106,10 +106,10 @@ proxy-groups:
   - name: 📺BilibiliHMT
     type: select
     proxies:
+      - DIRECT
       - 🇭🇰 香港
       - 🇨🇳 台湾
       - 🚀
-      - DIRECT
       - 🇺🇸 美国
       - 🇸🇬 狮城
       - 🇯🇵 日本
