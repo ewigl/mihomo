@@ -25,7 +25,6 @@
     ├── mihomo.startup.vbs
     ├── mihomo.stop.bat
     ├── README.md
-    ├── updater.bat
     ├── custom-rules/
     │   ├── direct.yaml
     │   ├── proxy.yaml
