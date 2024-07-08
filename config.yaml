@@ -1,4 +1,9 @@
 #
+# for compatibility
+redir-port: 9797
+tproxy-port: 9898
+
+# mixed-port
 mixed-port: 8486
 
 ipv6: false
@@ -9,14 +14,13 @@ allow-lan: true
 log-level: warning
 
 geodata-mode: true
-
 geox-url:
   geoip: "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat"
   geosite: "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat"
 
 external-controller: :9090
 external-ui: metacubexd
-secret: "998486"
+secret: 998486
 
 profile:
   store-selected: true
