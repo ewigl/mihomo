@@ -1,4 +1,3 @@
-tmp/
 proxies/
 ruleset/
 metacubexd/
@@ -6,4 +5,3 @@ cache.db
 GeoIP.dat
 GeoSite.dat
 mihomo-windows-amd64.exe
-box_for_root/bin/xclash/mihomo
