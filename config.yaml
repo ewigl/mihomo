@@ -122,8 +122,8 @@ proxy-groups:
   - name: ⓂMicrosoft
     type: select
     proxies:
-      - DIRECT
       - 🚀
+      - DIRECT
       - 🇺🇸 美国
       - 🇭🇰 香港
       - 🇨🇳 台湾
