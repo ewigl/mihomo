@@ -1,2 +1,3 @@
 payload:
+  # Qbittorrent
   - "+.qbittorrent.org"
