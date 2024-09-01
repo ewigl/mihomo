@@ -1,5 +1,5 @@
 payload:
   # GoFile
   - "+.gofile.io"
-  # Affect Steam Download Server
+  # Affect Steam login / download server
   - "+.steamserver.net"
