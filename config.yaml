@@ -28,7 +28,7 @@ profile:
 
 tun:
   enable: true
-  stack: system
+  stack: mixed
   auto-route: true
   auto-detect-interface: true
   dns-hijack:
