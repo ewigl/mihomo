@@ -131,18 +131,6 @@ proxy-groups:
       - 🇯🇵 日本
       - 🇺🇳 全球
 
-  - name: 🧲qBittorrent
-    type: select
-    proxies:
-      - 🇺🇸 美国
-      - DIRECT
-      - 🚀
-      - 🇭🇰 香港
-      - 🇨🇳 台湾
-      - 🇸🇬 狮城
-      - 🇯🇵 日本
-      - 🇺🇳 全球
-
   - name: 📹YouTube
     type: select
     proxies:
@@ -269,11 +257,6 @@ rule-providers:
     behavior: domain
     path: ./custom-rules/reject.yaml
 
-  custom-qbittorrent:
-    type: file
-    behavior: domain
-    path: ./custom-rules/qbittorrent.yaml
-
   # extended rules https://github.com/ACL4SSR/ACL4SSR/tree/master/Clash/Providers/Ruleset
   bahamut:
     type: http
@@ -315,7 +298,6 @@ rules:
   - RULE-SET,custom-reject,REJECT
   - RULE-SET,custom-direct,DIRECT
   - RULE-SET,custom-proxy,🚀
-  - RULE-SET,custom-qbittorrent,🧲qBittorrent
   # extended
   - RULE-SET,bahamut,📺Bahamut
   - RULE-SET,bilibiliHMT,📺BilibiliHMT
