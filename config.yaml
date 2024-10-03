@@ -163,6 +163,22 @@ proxy-providers:
   #     interval: 7200
 
 rule-providers:
+  # Custom Rules - Local
+  custom-direct:
+    type: file
+    behavior: domain
+    path: ./custom-rules/direct.yaml
+
+  custom-proxy:
+    type: file
+    behavior: domain
+    path: ./custom-rules/proxy.yaml
+
+  custom-reject:
+    type: file
+    behavior: domain
+    path: ./custom-rules/reject.yaml
+
   # Clash Rules https://github.com/Loyalsoldier/clash-rules
   icloud:
     type: http
@@ -241,23 +257,23 @@ rule-providers:
     path: ./ruleset/applications.yaml
     interval: 86400
 
-  # custom-rules local
-  custom-direct:
-    type: file
-    behavior: domain
-    path: ./custom-rules/direct.yaml
+  # Extended Reject Rules https://github.com/ACL4SSR/ACL4SSR/tree/master/Clash
+  ban-ad:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/BanAD.yaml"
+    path: ./ruleset/ban-ad.yaml
+    interval: 86400
 
-  custom-proxy:
-    type: file
-    behavior: domain
-    path: ./custom-rules/proxy.yaml
+  # Extended Direct Rules https://github.com/ACL4SSR/ACL4SSR/tree/master/Clash
+  steam-cn:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/SteamCN.yaml"
+    path: ./ruleset/steam-cn.yaml
+    interval: 86400
 
-  custom-reject:
-    type: file
-    behavior: domain
-    path: ./custom-rules/reject.yaml
-
-  # extended rules https://github.com/ACL4SSR/ACL4SSR/tree/master/Clash/Providers/Ruleset
+  # Extended Selectable Rules https://github.com/ACL4SSR/ACL4SSR/tree/master/Clash
   bahamut:
     type: http
     behavior: classical
@@ -279,13 +295,6 @@ rule-providers:
     path: ./ruleset/microsoft.yaml
     interval: 86400
 
-  steam-cn:
-    type: http
-    behavior: classical
-    url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/SteamCN.yaml"
-    path: ./ruleset/steam-cn.yaml
-    interval: 86400
-
   youtube:
     type: http
     behavior: classical
@@ -298,13 +307,16 @@ rules:
   - RULE-SET,custom-reject,REJECT
   - RULE-SET,custom-direct,DIRECT
   - RULE-SET,custom-proxy,🚀
-  # extended
+  # extended reject
+  - RULE-SET,ban-ad,REJECT
+  # extended direct
+  - RULE-SET,steam-cn,DIRECT
+  # extended selectable
   - RULE-SET,bahamut,📺Bahamut
   - RULE-SET,bilibiliHMT,📺BilibiliHMT
   - RULE-SET,microsoft,ⓂMicrosoft
-  - RULE-SET,steam-cn,DIRECT
   - RULE-SET,youtube,📹YouTube
-  # Clash Rules whitelist
+  # Clash Rules, Whitelist Mode
   - RULE-SET,applications,DIRECT
   - RULE-SET,private,DIRECT
   - RULE-SET,icloud,DIRECT
