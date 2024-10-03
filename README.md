@@ -23,9 +23,9 @@
     ├── config.yaml
     ├── GeoIP.dat
     ├── GeoSite.dat
-    ├── Mihomo StartUp.xml
     ├── mihomo-windows-amd64.exe
-    ├── mihomo.startup.vbs
+    ├── mihomo.start.vbs
+    ├── Mihomo.Startup.xml
     ├── mihomo.stop.bat
     ├── README.md
     ├── custom-rules/
