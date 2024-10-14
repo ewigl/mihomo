@@ -6,8 +6,6 @@ tproxy-port: 9898
 # mixed-port
 mixed-port: 8486
 
-ipv6: false
-
 mode: rule
 allow-lan: true
 
@@ -36,7 +34,6 @@ tun:
 
 dns:
   enable: true
-  prefer-h3: true
   listen: :53
   enhanced-mode: fake-ip
   fake-ip-range: 16.0.0.1/8
@@ -322,10 +319,10 @@ rules:
   - RULE-SET,icloud,DIRECT
   - RULE-SET,apple,DIRECT
   - RULE-SET,direct,DIRECT
-  - RULE-SET,lancidr,DIRECT
-  - RULE-SET,cncidr,DIRECT
+  - RULE-SET,lancidr,DIRECT,no-resolve
+  - RULE-SET,cncidr,DIRECT,no-resolve
   - RULE-SET,proxy,🚀
-  - RULE-SET,telegramcidr,🚀
+  - RULE-SET,telegramcidr,🚀,no-resolve
   - GEOIP,LAN,DIRECT
   - GEOIP,CN,DIRECT
   - MATCH,🚀
