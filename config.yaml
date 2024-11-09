@@ -92,7 +92,7 @@ proxy-groups:
       # - Subscription
 
   # Services
-  - name: 📺Bahamut
+  - name: 📹Bahamut
     type: select
     proxies:
       - 🇨🇳 台湾
@@ -128,7 +128,19 @@ proxy-groups:
       - 🇯🇵 日本
       - 🇺🇳 全球
 
-  - name: 📹YouTube
+  - name: 🎬Netflix
+    type: select
+    proxies:
+      - 🚀
+      - DIRECT
+      - 🇺🇸 美国
+      - 🇭🇰 香港
+      - 🇨🇳 台湾
+      - 🇸🇬 狮城
+      - 🇯🇵 日本
+      - 🇺🇳 全球
+
+  - name: 🎥YouTube
     type: select
     proxies:
       - 🚀
@@ -292,6 +304,13 @@ rule-providers:
     path: ./ruleset/microsoft.yaml
     interval: 86400
 
+  netflix:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Netflix.yaml"
+    path: ./ruleset/netflix.yaml
+    interval: 86400
+
   youtube:
     type: http
     behavior: classical
@@ -309,10 +328,11 @@ rules:
   # extended direct
   - RULE-SET,steam-cn,DIRECT
   # extended selectable
-  - RULE-SET,bahamut,📺Bahamut
+  - RULE-SET,bahamut,📹Bahamut
   - RULE-SET,bilibiliHMT,📺BilibiliHMT
   - RULE-SET,microsoft,ⓂMicrosoft
-  - RULE-SET,youtube,📹YouTube
+  - RULE-SET,netflix,🎬Netflix
+  - RULE-SET,youtube,🎥YouTube
   # Clash Rules, Whitelist Mode
   - RULE-SET,applications,DIRECT
   - RULE-SET,private,DIRECT
