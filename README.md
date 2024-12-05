@@ -1,19 +1,20 @@
 ## Mihomo Tun 模式配置
 
-### 文档
+> 直接运行内核。支持 Windows 和具有 root 权限的 Android。
+>
+> Web UI 默认密码为 `998486`。
 
-[![ZH](https://img.shields.io/badge/lang-zh--CN-blue)](https://ewigl.github.io/notes/posts/202404/mihomo-tun-guide/)
+### 完整文档
+
+[![完整文档](https://img.shields.io/badge/完整文档-blue)](https://ewigl.github.io/notes/posts/202404/mihomo-tun-guide/)
 
 ### 准备
 
-1. 下载 [Mihomo Core](https://github.com/MetaCubeX/mihomo/releases)。
-2. 在[这里](https://github.com/Loyalsoldier/v2ray-rules-dat/releases)下载 `GeoIP.dat` 、 `GeoSite.dat`。
-3. 在[这里](https://github.com/MetaCubeX/metacubexd/releases)下载 `metacubexd`。
-4. Android 版本使用 [Box for Root](https://github.com/taamarin/box_for_magisk/releases)。
-
-### 备注
-
-- 控制台默认密码为 `998486`，在 `config.yaml` 中修改。
+1. 下载 [mihomo](https://github.com/MetaCubeX/mihomo/releases) 内核。
+2. 下载 [geoip.metadb](https://github.com/MetaCubeX/meta-rules-dat/releases) GeoIP 数据文件。
+3. 下载 [metacubexd](https://github.com/MetaCubeX/metacubexd/releases) Web UI。
+4. 【Android】下载 [Box for Root](https://github.com/taamarin/box_for_magisk/releases)。
+5. 按照目录结构整理现有文件。
 
 ### 目录结构 - Windows
 
@@ -21,8 +22,7 @@
 .
 └── D:/Apps/Mihomo/
     ├── config.yaml
-    ├── GeoIP.dat
-    ├── GeoSite.dat
+    ├── geoip.metadb
     ├── mihomo-windows-amd64.exe
     ├── mihomo.start.vbs
     ├── Mihomo.Startup.xml
@@ -56,6 +56,11 @@
         ├── proxies/
         ├── ruleset/
         ├── config.yaml
-        ├── GeoIP.dat
-        └── GeoSite.dat
+        └── geoip.metadb
 ```
+
+### 预览
+
+![00](https://ewigl.github.io/notes/posts/202404/images/00.png)
+
+![01](https://ewigl.github.io/notes/posts/202404/images/01.png)
