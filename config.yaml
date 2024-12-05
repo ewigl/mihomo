@@ -1,29 +1,24 @@
-#
-# for compatibility
+######## ports
 redir-port: 9797
 tproxy-port: 9898
 
-# mixed-port
 mixed-port: 8486
 
+######## basics
 mode: rule
 allow-lan: true
 
 log-level: warning
 
-geodata-mode: true
-geox-url:
-  geoip: "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat"
-  geosite: "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat"
-
+######## web ui
 external-controller: :9090
 external-ui: metacubexd
 secret: 998486
-
 profile:
   store-selected: true
   store-fake-ip: true
 
+######## tun
 tun:
   enable: true
   stack: mixed
@@ -32,12 +27,33 @@ tun:
   dns-hijack:
     - any:53
 
+######## dns
 dns:
   enable: true
   listen: :53
   enhanced-mode: fake-ip
   fake-ip-range: 16.0.0.1/8
 
+######## anchors in proxy groups
+used-in-proxy-groups: &used-in-proxy-groups
+  type: select
+  use:
+    - Local
+  # - Subscription
+
+default-proxies-in-proxy-groups: &default-proxies-in-proxy-groups
+  type: select
+  proxies:
+    - 🚀
+    - 🇺🇸 美国
+    - 🇭🇰 香港
+    - 🇨🇳 台湾
+    - 🇸🇬 狮城
+    - 🇯🇵 日本
+    - 🇺🇳 全球
+    - DIRECT
+
+######## proxy groups
 proxy-groups:
   - name: 🚀
     type: select
@@ -51,45 +67,27 @@ proxy-groups:
 
   # Regions
   - name: 🇺🇸 美国
-    type: select
-    use:
-      - Local
-      # - Subscription
+    <<: *used-in-proxy-groups
     filter: "US|🇺🇸|美国"
 
   - name: 🇭🇰 香港
-    type: select
-    use:
-      - Local
-      # - Subscription
+    <<: *used-in-proxy-groups
     filter: "HK|🇭🇰|香港"
 
   - name: 🇨🇳 台湾
-    type: select
-    use:
-      - Local
-      # - Subscription
+    <<: *used-in-proxy-groups
     filter: "TW|🇨🇳|🇹🇼|台湾"
 
   - name: 🇸🇬 狮城
-    type: select
-    use:
-      - Local
-      # - Subscription
+    <<: *used-in-proxy-groups
     filter: "SG|🇸🇬|新加坡|狮城"
 
   - name: 🇯🇵 日本
-    type: select
-    use:
-      - Local
-      # - Subscription
+    <<: *used-in-proxy-groups
     filter: "JP|🇯🇵|日本"
 
   - name: 🇺🇳 全球
-    type: select
-    use:
-      - Local
-      # - Subscription
+    <<: *used-in-proxy-groups
 
   # Services
   - name: 📹Bahamut
@@ -104,54 +102,16 @@ proxy-groups:
       - 🇯🇵 日本
       - 🇺🇳 全球
 
-  - name: 📺BilibiliHMT
-    type: select
-    proxies:
-      - DIRECT
-      - 🇭🇰 香港
-      - 🇨🇳 台湾
-      - 🚀
-      - 🇺🇸 美国
-      - 🇸🇬 狮城
-      - 🇯🇵 日本
-      - 🇺🇳 全球
-
   - name: ⓂMicrosoft
-    type: select
-    proxies:
-      - 🚀
-      - DIRECT
-      - 🇺🇸 美国
-      - 🇭🇰 香港
-      - 🇨🇳 台湾
-      - 🇸🇬 狮城
-      - 🇯🇵 日本
-      - 🇺🇳 全球
+    <<: *default-proxies-in-proxy-groups
 
   - name: 🎬Netflix
-    type: select
-    proxies:
-      - 🚀
-      - DIRECT
-      - 🇺🇸 美国
-      - 🇭🇰 香港
-      - 🇨🇳 台湾
-      - 🇸🇬 狮城
-      - 🇯🇵 日本
-      - 🇺🇳 全球
+    <<: *default-proxies-in-proxy-groups
 
   - name: 🎥YouTube
-    type: select
-    proxies:
-      - 🚀
-      - DIRECT
-      - 🇺🇸 美国
-      - 🇭🇰 香港
-      - 🇨🇳 台湾
-      - 🇸🇬 狮城
-      - 🇯🇵 日本
-      - 🇺🇳 全球
+    <<: *default-proxies-in-proxy-groups
 
+######## proxy providers
 proxy-providers:
   Local:
     type: file
@@ -267,12 +227,6 @@ rule-providers:
     interval: 86400
 
   # Extended Reject Rules https://github.com/ACL4SSR/ACL4SSR/tree/master/Clash
-  ban-ad:
-    type: http
-    behavior: classical
-    url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/BanAD.yaml"
-    path: ./ruleset/ban-ad.yaml
-    interval: 86400
 
   # Extended Direct Rules https://github.com/ACL4SSR/ACL4SSR/tree/master/Clash
   steam-cn:
@@ -288,13 +242,6 @@ rule-providers:
     behavior: classical
     url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Bahamut.yaml"
     path: ./ruleset/bahamut.yaml
-    interval: 86400
-
-  bilibiliHMT:
-    type: http
-    behavior: classical
-    url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/BilibiliHMT.yaml"
-    path: ./ruleset/bilibiliHMT.yaml
     interval: 86400
 
   microsoft:
@@ -324,12 +271,10 @@ rules:
   - RULE-SET,custom-direct,DIRECT
   - RULE-SET,custom-proxy,🚀
   # extended reject
-  - RULE-SET,ban-ad,REJECT
   # extended direct
   - RULE-SET,steam-cn,DIRECT
   # extended selectable
   - RULE-SET,bahamut,📹Bahamut
-  - RULE-SET,bilibiliHMT,📺BilibiliHMT
   - RULE-SET,microsoft,ⓂMicrosoft
   - RULE-SET,netflix,🎬Netflix
   - RULE-SET,youtube,🎥YouTube
