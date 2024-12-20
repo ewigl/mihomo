@@ -6,7 +6,7 @@
 
 ### 完整文档
 
-[![完整文档](https://img.shields.io/badge/完整文档-blue)](https://ewigl.github.io/notes/posts/202404/mihomo-tun-guide/)
+[![完整文档](https://img.shields.io/badge/完整文档-blue)](https://ewigl.github.io/notes/posts/programming/mihomo-tun-guide/)
 
 ### 准备
 
@@ -61,6 +61,6 @@
 
 ### 预览
 
-![00](https://ewigl.github.io/notes/posts/202404/images/00.png)
+![00](https://ewigl.github.io/notes/posts/programming/mihomo-tun-guide/images/00.png)
 
-![01](https://ewigl.github.io/notes/posts/202404/images/01.png)
+![01](https://ewigl.github.io/notes/posts/programming/mihomo-tun-guide/images/01.png)
