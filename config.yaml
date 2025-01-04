@@ -43,15 +43,7 @@ used-in-proxy-groups: &used-in-proxy-groups
 
 default-proxies-in-proxy-groups: &default-proxies-in-proxy-groups
   type: select
-  proxies:
-    - 🚀
-    - 🇺🇸 美国
-    - 🇭🇰 香港
-    - 🇨🇳 台湾
-    - 🇸🇬 狮城
-    - 🇯🇵 日本
-    - 🇺🇳 全球
-    - DIRECT
+  proxies: [🚀, 🇺🇸 美国, 🇨🇳 台湾, 🇭🇰 香港, 🇸🇬 狮城, 🇯🇵 日本, 🇺🇳 全球, DIRECT]
 
 ######## proxy groups
 proxy-groups:
@@ -64,6 +56,7 @@ proxy-groups:
       - 🇸🇬 狮城
       - 🇯🇵 日本
       - 🇺🇳 全球
+      - DIRECT
 
   # Regions
   - name: 🇺🇸 美国
@@ -92,15 +85,7 @@ proxy-groups:
   # Services
   - name: 📹Bahamut
     type: select
-    proxies:
-      - 🇨🇳 台湾
-      - 🚀
-      - DIRECT
-      - 🇺🇸 美国
-      - 🇭🇰 香港
-      - 🇸🇬 狮城
-      - 🇯🇵 日本
-      - 🇺🇳 全球
+    proxies: [🇨🇳 台湾, 🚀, 🇺🇸 美国, 🇭🇰 香港, 🇸🇬 狮城, 🇯🇵 日本, 🇺🇳 全球, DIRECT]
 
   - name: ⓂMicrosoft
     <<: *default-proxies-in-proxy-groups
@@ -182,20 +167,6 @@ rule-providers:
     behavior: domain
     url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt"
     path: ./ruleset/private.yaml
-    interval: 86400
-
-  gfw:
-    type: http
-    behavior: domain
-    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt"
-    path: ./ruleset/gfw.yaml
-    interval: 86400
-
-  tld-not-cn:
-    type: http
-    behavior: domain
-    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/tld-not-cn.txt"
-    path: ./ruleset/tld-not-cn.yaml
     interval: 86400
 
   telegramcidr:
@@ -288,6 +259,4 @@ rules:
   - RULE-SET,cncidr,DIRECT,no-resolve
   - RULE-SET,proxy,🚀
   - RULE-SET,telegramcidr,🚀,no-resolve
-  - GEOIP,LAN,DIRECT
-  - GEOIP,CN,DIRECT
   - MATCH,🚀
