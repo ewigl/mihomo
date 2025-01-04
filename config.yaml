@@ -62,13 +62,13 @@ proxy-groups:
     <<: *used-anchor
     filter: "US|🇺🇸|美国"
 
-  - name: 🇭🇰 香港
-    <<: *used-anchor
-    filter: "HK|🇭🇰|香港"
-
   - name: 🇨🇳 台湾
     <<: *used-anchor
     filter: "TW|🇨🇳|🇹🇼|台湾"
+
+  - name: 🇭🇰 香港
+    <<: *used-anchor
+    filter: "HK|🇭🇰|香港"
 
   - name: 🇸🇬 狮城
     <<: *used-anchor
