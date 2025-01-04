@@ -11,10 +11,9 @@
 ### 准备
 
 1. 下载 [mihomo](https://github.com/MetaCubeX/mihomo/releases) 内核。
-2. 下载 [geoip.metadb](https://github.com/MetaCubeX/meta-rules-dat/releases) GeoIP 数据文件。
-3. 下载 [metacubexd](https://github.com/MetaCubeX/metacubexd/releases) Web UI。
-4. 【Android】下载 [Box for Root](https://github.com/taamarin/box_for_magisk/releases)。
-5. 按照目录结构整理现有文件。
+2. 下载 [metacubexd](https://github.com/MetaCubeX/metacubexd/releases) Web UI。
+3. 【Android】下载 [Box for Root](https://github.com/taamarin/box_for_magisk/releases)。
+4. 按照目录结构整理现有文件。
 
 ### 目录结构 - Windows
 
@@ -22,7 +21,6 @@
 .
 └── D:/Apps/Mihomo/
     ├── config.yaml
-    ├── geoip.metadb
     ├── mihomo-windows-amd64.exe
     ├── mihomo.start.vbs
     ├── Mihomo.Startup.xml
@@ -55,8 +53,7 @@
         ├── metacubexd/
         ├── proxies/
         ├── ruleset/
-        ├── config.yaml
-        └── geoip.metadb
+        └── config.yaml
 ```
 
 ### 预览
