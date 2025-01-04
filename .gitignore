@@ -1,4 +1,5 @@
 proxies/
+rules/
 ruleset/
 metacubexd/
 cache.db

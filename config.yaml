@@ -35,66 +35,64 @@ dns:
   fake-ip-range: 16.0.0.1/8
 
 ######## anchors in proxy groups
-used-in-proxy-groups: &used-in-proxy-groups
+proxies-anchor: &proxies-anchor
+  type: select
+  proxies: [🇺🇸 美国, 🇨🇳 台湾, 🇭🇰 香港, 🇸🇬 狮城, 🇯🇵 日本, DIRECT]
+
+used-anchor: &used-anchor
   type: select
   use:
     - Local
   # - Subscription
 
-default-proxies-in-proxy-groups: &default-proxies-in-proxy-groups
+all-proxies-anchor: &all-proxies-anchor
   type: select
-  proxies: [🚀, 🇺🇸 美国, 🇨🇳 台湾, 🇭🇰 香港, 🇸🇬 狮城, 🇯🇵 日本, 🇺🇳 全球, DIRECT]
+  proxies: [🚀, 🇺🇸 美国, 🇨🇳 台湾, 🇭🇰 香港, 🇸🇬 狮城, 🇯🇵 日本, DIRECT]
+  use:
+    - Local
+    # - Subscription
 
 ######## proxy groups
 proxy-groups:
   - name: 🚀
-    type: select
-    proxies:
-      - 🇺🇸 美国
-      - 🇭🇰 香港
-      - 🇨🇳 台湾
-      - 🇸🇬 狮城
-      - 🇯🇵 日本
-      - 🇺🇳 全球
-      - DIRECT
+    <<: *proxies-anchor
 
   # Regions
   - name: 🇺🇸 美国
-    <<: *used-in-proxy-groups
+    <<: *used-anchor
     filter: "US|🇺🇸|美国"
 
   - name: 🇭🇰 香港
-    <<: *used-in-proxy-groups
+    <<: *used-anchor
     filter: "HK|🇭🇰|香港"
 
   - name: 🇨🇳 台湾
-    <<: *used-in-proxy-groups
+    <<: *used-anchor
     filter: "TW|🇨🇳|🇹🇼|台湾"
 
   - name: 🇸🇬 狮城
-    <<: *used-in-proxy-groups
+    <<: *used-anchor
     filter: "SG|🇸🇬|新加坡|狮城"
 
   - name: 🇯🇵 日本
-    <<: *used-in-proxy-groups
+    <<: *used-anchor
     filter: "JP|🇯🇵|日本"
-
-  - name: 🇺🇳 全球
-    <<: *used-in-proxy-groups
 
   # Services
   - name: 📹Bahamut
-    type: select
-    proxies: [🇨🇳 台湾, 🚀, 🇺🇸 美国, 🇭🇰 香港, 🇸🇬 狮城, 🇯🇵 日本, 🇺🇳 全球, DIRECT]
+    <<: *all-proxies-anchor
 
   - name: ⓂMicrosoft
-    <<: *default-proxies-in-proxy-groups
+    <<: *all-proxies-anchor
 
   - name: 🎬Netflix
-    <<: *default-proxies-in-proxy-groups
+    <<: *all-proxies-anchor
+
+  - name: ✈Telegram
+    <<: *all-proxies-anchor
 
   - name: 🎥YouTube
-    <<: *default-proxies-in-proxy-groups
+    <<: *all-proxies-anchor
 
 ######## proxy providers
 proxy-providers:
@@ -116,8 +114,13 @@ proxy-providers:
   #     url: http://www.gstatic.com/generate_204
   #     interval: 7200
 
+######## rule providers
+rule-anchor:
+  domain: &domain { type: http, interval: 86400, behavior: domain, format: mrs }
+  ip: &ip { type: http, interval: 86400, behavior: ipcidr, format: mrs }
+
 rule-providers:
-  # Custom Rules - Local
+  # Custom Local Rules
   custom-direct:
     type: file
     behavior: domain
@@ -133,130 +136,82 @@ rule-providers:
     behavior: domain
     path: ./custom-rules/reject.yaml
 
-  # Clash Rules https://github.com/Loyalsoldier/clash-rules
-  icloud:
-    type: http
-    behavior: domain
-    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/icloud.txt"
-    path: ./ruleset/icloud.yaml
-    interval: 86400
-
+  # Meta Rules https://github.com/MetaCubeX/meta-rules-dat/blob/meta/geo/geosite
+  # Domain Rules
   apple:
-    type: http
-    behavior: domain
-    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/apple.txt"
-    path: ./ruleset/apple.yaml
-    interval: 86400
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple.mrs"
 
-  proxy:
-    type: http
-    behavior: domain
-    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt"
-    path: ./ruleset/proxy.yaml
-    interval: 86400
-
-  direct:
-    type: http
-    behavior: domain
-    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/direct.txt"
-    path: ./ruleset/direct.yaml
-    interval: 86400
-
-  private:
-    type: http
-    behavior: domain
-    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt"
-    path: ./ruleset/private.yaml
-    interval: 86400
-
-  telegramcidr:
-    type: http
-    behavior: ipcidr
-    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt"
-    path: ./ruleset/telegramcidr.yaml
-    interval: 86400
-
-  cncidr:
-    type: http
-    behavior: ipcidr
-    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/cncidr.txt"
-    path: ./ruleset/cncidr.yaml
-    interval: 86400
-
-  lancidr:
-    type: http
-    behavior: ipcidr
-    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/lancidr.txt"
-    path: ./ruleset/lancidr.yaml
-    interval: 86400
-
-  applications:
-    type: http
-    behavior: classical
-    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/applications.txt"
-    path: ./ruleset/applications.yaml
-    interval: 86400
-
-  # Extended Reject Rules https://github.com/ACL4SSR/ACL4SSR/tree/master/Clash
-
-  # Extended Direct Rules https://github.com/ACL4SSR/ACL4SSR/tree/master/Clash
-  steam-cn:
-    type: http
-    behavior: classical
-    url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/SteamCN.yaml"
-    path: ./ruleset/steam-cn.yaml
-    interval: 86400
-
-  # Extended Selectable Rules https://github.com/ACL4SSR/ACL4SSR/tree/master/Clash
   bahamut:
-    type: http
-    behavior: classical
-    url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Bahamut.yaml"
-    path: ./ruleset/bahamut.yaml
-    interval: 86400
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/bahamut.mrs"
+
+  cn:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs"
+
+  icloud:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/icloud.mrs"
 
   microsoft:
-    type: http
-    behavior: classical
-    url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Microsoft.yaml"
-    path: ./ruleset/microsoft.yaml
-    interval: 86400
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft.mrs"
 
   netflix:
-    type: http
-    behavior: classical
-    url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/Netflix.yaml"
-    path: ./ruleset/netflix.yaml
-    interval: 86400
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs"
+
+  private:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"
+
+  steam@cn:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/steam@cn.mrs"
+
+  telegram:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.mrs"
 
   youtube:
-    type: http
-    behavior: classical
-    url: "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/YouTube.yaml"
-    path: ./ruleset/youtube.yaml
-    interval: 86400
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs"
+
+  # CIDR Rules
+  cncidr:
+    <<: *ip
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs"
+
+  privatecidr:
+    <<: *ip
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.mrs"
+
+  telegramcidr:
+    <<: *ip
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat//meta/geo/geoip/telegram.mrs"
 
 rules:
-  # custom
-  - RULE-SET,custom-reject,REJECT
+  # Custom Local Rules
   - RULE-SET,custom-direct,DIRECT
+  - RULE-SET,custom-reject,REJECT
   - RULE-SET,custom-proxy,🚀
-  # extended reject
-  # extended direct
-  - RULE-SET,steam-cn,DIRECT
-  # extended selectable
+  # Meta Domain Direct
+  - RULE-SET,apple,DIRECT
+  - RULE-SET,cn,DIRECT
+  - RULE-SET,icloud,DIRECT
+  - RULE-SET,private,DIRECT
+  - RULE-SET,steam@cn,DIRECT
+  # Meta Domain Selectable
   - RULE-SET,bahamut,📹Bahamut
   - RULE-SET,microsoft,ⓂMicrosoft
   - RULE-SET,netflix,🎬Netflix
+  - RULE-SET,telegram,✈Telegram
   - RULE-SET,youtube,🎥YouTube
-  # Clash Rules, Whitelist Mode
-  - RULE-SET,applications,DIRECT
-  - RULE-SET,private,DIRECT
-  - RULE-SET,icloud,DIRECT
-  - RULE-SET,apple,DIRECT
-  - RULE-SET,direct,DIRECT
-  - RULE-SET,lancidr,DIRECT,no-resolve
+  # Meta CIDR Direct
   - RULE-SET,cncidr,DIRECT,no-resolve
-  - RULE-SET,proxy,🚀
+  - RULE-SET,privatecidr,DIRECT,no-resolve
+  # Meta CIDR Selectable
   - RULE-SET,telegramcidr,🚀,no-resolve
+  # Others
   - MATCH,🚀
