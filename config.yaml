@@ -35,10 +35,6 @@ dns:
   fake-ip-range: 16.0.0.1/8
 
 ######## anchors in proxy groups
-proxies-anchor: &proxies-anchor
-  type: select
-  proxies: [🇺🇸 美国, 🇨🇳 台湾, 🇭🇰 香港, 🇸🇬 狮城, 🇯🇵 日本]
-
 used-anchor: &used-anchor
   type: select
   use:
@@ -55,7 +51,8 @@ all-proxies-anchor: &all-proxies-anchor
 ######## proxy groups
 proxy-groups:
   - name: 🚀
-    <<: *proxies-anchor
+    type: select
+    proxies: [🇺🇸 美国, 🇨🇳 台湾, 🇭🇰 香港, 🇸🇬 狮城, 🇯🇵 日本]
 
   # Regions
   - name: 🇺🇸 美国
@@ -80,7 +77,9 @@ proxy-groups:
 
   # Services
   - name: 📹Bahamut
-    <<: *all-proxies-anchor
+    <<: *used-anchor
+    # use 🇨🇳 台湾 by default
+    proxies: [🇨🇳 台湾, 🚀, 🇺🇸 美国, 🇭🇰 香港, 🇸🇬 狮城, 🇯🇵 日本, DIRECT]
 
   - name: ⓂMicrosoft
     <<: *all-proxies-anchor
@@ -89,7 +88,9 @@ proxy-groups:
     <<: *all-proxies-anchor
 
   - name: 🎮SteamCN
-    <<: *all-proxies-anchor
+    <<: *used-anchor
+    # use DIRECT by default
+    proxies: [DIRECT, 🚀, 🇺🇸 美国, 🇨🇳 台湾, 🇭🇰 香港, 🇸🇬 狮城, 🇯🇵 日本]
 
   - name: ✈Telegram
     <<: *all-proxies-anchor
@@ -120,7 +121,7 @@ proxy-providers:
 ######## rule providers
 rule-anchor:
   domain: &domain { type: http, interval: 86400, behavior: domain, format: mrs }
-  ip: &ip { type: http, interval: 86400, behavior: ipcidr, format: mrs }
+  cidr: &cidr { type: http, interval: 86400, behavior: ipcidr, format: mrs }
 
 rule-providers:
   # Custom Local Rules
@@ -183,15 +184,15 @@ rule-providers:
 
   # CIDR Rules
   cncidr:
-    <<: *ip
+    <<: *cidr
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs"
 
   privatecidr:
-    <<: *ip
+    <<: *cidr
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.mrs"
 
   telegramcidr:
-    <<: *ip
+    <<: *cidr
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat//meta/geo/geoip/telegram.mrs"
 
 rules:
