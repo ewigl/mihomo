@@ -37,7 +37,7 @@ dns:
 ######## anchors in proxy groups
 proxies-anchor: &proxies-anchor
   type: select
-  proxies: [🇺🇸 美国, 🇨🇳 台湾, 🇭🇰 香港, 🇸🇬 狮城, 🇯🇵 日本, DIRECT]
+  proxies: [🇺🇸 美国, 🇨🇳 台湾, 🇭🇰 香港, 🇸🇬 狮城, 🇯🇵 日本]
 
 used-anchor: &used-anchor
   type: select
@@ -86,6 +86,9 @@ proxy-groups:
     <<: *all-proxies-anchor
 
   - name: 🎬Netflix
+    <<: *all-proxies-anchor
+
+  - name: 🎮SteamCN
     <<: *all-proxies-anchor
 
   - name: ✈Telegram
@@ -201,11 +204,11 @@ rules:
   - RULE-SET,cn,DIRECT
   - RULE-SET,icloud,DIRECT
   - RULE-SET,private,DIRECT
-  - RULE-SET,steam@cn,DIRECT
   # Meta Domain Selectable
   - RULE-SET,bahamut,📹Bahamut
   - RULE-SET,microsoft,ⓂMicrosoft
   - RULE-SET,netflix,🎬Netflix
+  - RULE-SET,steam@cn,🎮SteamCN
   - RULE-SET,telegram,✈Telegram
   - RULE-SET,youtube,🎥YouTube
   # Meta CIDR Direct
