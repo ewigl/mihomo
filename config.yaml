@@ -35,68 +35,71 @@ dns:
   fake-ip-range: 16.0.0.1/8
 
 ######## anchors in proxy groups
-used-anchor: &used-anchor
-  type: select
-  use:
-    - Local
-  # - Subscription
-
 all-proxies-anchor: &all-proxies-anchor
   type: select
-  proxies: [🚀, 🇺🇸 美国, 🇨🇳 台湾, 🇭🇰 香港, 🇸🇬 狮城, 🇯🇵 日本, DIRECT]
-  use:
-    - Local
-    # - Subscription
+  include-all: true
+
+default-proxies-anchor: &default-proxies-anchor
+  type: select
+  include-all: true
+  proxies: [🚀 默认, 🇺🇸 美国, 🇨🇳 台湾, 🇭🇰 香港, 🇸🇬 狮城, 🇯🇵 日本, DIRECT]
 
 ######## proxy groups
 proxy-groups:
-  - name: 🚀
-    type: select
-    proxies: [🇺🇸 美国, 🇨🇳 台湾, 🇭🇰 香港, 🇸🇬 狮城, 🇯🇵 日本]
+  # Default
+  - name: 🚀 默认
+    <<: *all-proxies-anchor
+    proxies: [🇺🇸 美国, 🇨🇳 台湾, 🇭🇰 香港, 🇸🇬 狮城, 🇯🇵 日本, ⚡ 自动]
+
+  # Auto
+  - name: ⚡ 自动
+    type: url-test
+    include-all: true
+    exclude-type: direct
 
   # Regions
   - name: 🇺🇸 美国
-    <<: *used-anchor
+    <<: *all-proxies-anchor
     filter: "US|🇺🇸|美国"
 
   - name: 🇨🇳 台湾
-    <<: *used-anchor
+    <<: *all-proxies-anchor
     filter: "TW|🇨🇳|🇹🇼|台湾"
 
   - name: 🇭🇰 香港
-    <<: *used-anchor
+    <<: *all-proxies-anchor
     filter: "HK|🇭🇰|香港"
 
   - name: 🇸🇬 狮城
-    <<: *used-anchor
+    <<: *all-proxies-anchor
     filter: "SG|🇸🇬|新加坡|狮城"
 
   - name: 🇯🇵 日本
-    <<: *used-anchor
+    <<: *all-proxies-anchor
     filter: "JP|🇯🇵|日本"
 
   # Services
-  - name: 📹Bahamut
-    <<: *used-anchor
+  - name: 📹 Bahamut
+    <<: *all-proxies-anchor
     # use 🇨🇳 台湾 by default
-    proxies: [🇨🇳 台湾, 🚀, 🇺🇸 美国, 🇭🇰 香港, 🇸🇬 狮城, 🇯🇵 日本, DIRECT]
+    proxies: [🇨🇳 台湾, 🚀 默认, 🇺🇸 美国, 🇭🇰 香港, 🇸🇬 狮城, 🇯🇵 日本, DIRECT]
 
-  - name: ⓂMicrosoft
+  - name: Ⓜ Microsoft
+    <<: *default-proxies-anchor
+
+  - name: 🎬 Netflix
+    <<: *default-proxies-anchor
+
+  - name: 🎮 SteamCN
     <<: *all-proxies-anchor
-
-  - name: 🎬Netflix
-    <<: *all-proxies-anchor
-
-  - name: 🎮SteamCN
-    <<: *used-anchor
     # use DIRECT by default
-    proxies: [DIRECT, 🚀, 🇺🇸 美国, 🇨🇳 台湾, 🇭🇰 香港, 🇸🇬 狮城, 🇯🇵 日本]
+    proxies: [DIRECT, 🚀 默认, 🇺🇸 美国, 🇨🇳 台湾, 🇭🇰 香港, 🇸🇬 狮城, 🇯🇵 日本]
 
-  - name: ✈Telegram
-    <<: *all-proxies-anchor
+  - name: ✈ Telegram
+    <<: *default-proxies-anchor
 
-  - name: 🎥YouTube
-    <<: *all-proxies-anchor
+  - name: 🎥 YouTube
+    <<: *default-proxies-anchor
 
 ######## proxy providers
 proxy-providers:
@@ -199,23 +202,23 @@ rules:
   # Custom Local Rules
   - RULE-SET,custom-direct,DIRECT
   - RULE-SET,custom-reject,REJECT
-  - RULE-SET,custom-proxy,🚀
+  - RULE-SET,custom-proxy,🚀 默认
   # Meta Domain Direct
   - RULE-SET,apple,DIRECT
   - RULE-SET,cn,DIRECT
   - RULE-SET,icloud,DIRECT
   - RULE-SET,private,DIRECT
   # Meta Domain Selectable
-  - RULE-SET,bahamut,📹Bahamut
-  - RULE-SET,microsoft,ⓂMicrosoft
-  - RULE-SET,netflix,🎬Netflix
-  - RULE-SET,steam@cn,🎮SteamCN
-  - RULE-SET,telegram,✈Telegram
-  - RULE-SET,youtube,🎥YouTube
+  - RULE-SET,bahamut,📹 Bahamut
+  - RULE-SET,microsoft,Ⓜ Microsoft
+  - RULE-SET,netflix,🎬 Netflix
+  - RULE-SET,steam@cn,🎮 SteamCN
+  - RULE-SET,telegram,✈ Telegram
+  - RULE-SET,youtube,🎥 YouTube
   # Meta CIDR Direct
   - RULE-SET,cncidr,DIRECT,no-resolve
   - RULE-SET,privatecidr,DIRECT,no-resolve
   # Meta CIDR Selectable
-  - RULE-SET,telegramcidr,🚀,no-resolve
+  - RULE-SET,telegramcidr,🚀 默认,no-resolve
   # Others
-  - MATCH,🚀
+  - MATCH,🚀 默认
