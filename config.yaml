@@ -49,13 +49,7 @@ proxy-groups:
   # Default
   - name: 🚀 默认
     <<: *all-proxies-anchor
-    proxies: [🇺🇸 美国, 🇨🇳 台湾, 🇭🇰 香港, 🇸🇬 狮城, 🇯🇵 日本, ⚡ 自动]
-
-  # Auto
-  - name: ⚡ 自动
-    type: url-test
-    include-all: true
-    exclude-type: direct
+    proxies: [🇺🇸 美国, 🇨🇳 台湾, 🇭🇰 香港, 🇸🇬 狮城, 🇯🇵 日本]
 
   # Regions
   - name: 🇺🇸 美国
