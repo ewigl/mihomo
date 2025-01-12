@@ -33,6 +33,7 @@ tun:
 dns:
   enable: true
   listen: :53
+  ipv6: true
   enhanced-mode: fake-ip
   fake-ip-range: 16.0.0.1/8
 
@@ -211,10 +212,12 @@ rules:
   - RULE-SET,steam@cn,🎮 SteamCN
   - RULE-SET,telegram,✈ Telegram
   - RULE-SET,youtube,🎥 YouTube
+  # Meta Domain Proxy
   # Meta CIDR Direct
   - RULE-SET,cncidr,DIRECT,no-resolve
   - RULE-SET,privatecidr,DIRECT,no-resolve
   # Meta CIDR Selectable
-  - RULE-SET,telegramcidr,🚀 默认,no-resolve
+  - RULE-SET,telegramcidr,✈ Telegram,no-resolve
+  # Meta CIDR Proxy
   # Others
   - MATCH,🚀 默认
