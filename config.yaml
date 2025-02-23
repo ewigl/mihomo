@@ -33,7 +33,7 @@ tun:
 dns:
   enable: true
   listen: :53
-  ipv6: true
+  ipv6: false
   enhanced-mode: fake-ip
   fake-ip-range: 16.0.0.1/8
 
