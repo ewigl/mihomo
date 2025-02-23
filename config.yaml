@@ -10,7 +10,7 @@ allow-lan: true
 
 log-level: warning
 
-ipv6: true
+ipv6: false
 
 ######## web ui
 external-controller: :9090
