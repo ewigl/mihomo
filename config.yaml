@@ -10,8 +10,6 @@ allow-lan: true
 
 log-level: warning
 
-ipv6: false
-
 ######## web ui
 external-controller: :9090
 external-ui: metacubexd
@@ -33,7 +31,6 @@ tun:
 dns:
   enable: true
   listen: :53
-  ipv6: false
   enhanced-mode: fake-ip
   fake-ip-range: 16.0.0.1/8
 
