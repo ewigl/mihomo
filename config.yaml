@@ -84,6 +84,9 @@ proxy-groups:
   - name: 🎬 Netflix
     <<: *default-proxies-anchor
 
+  - name: 🎮 Nikke
+    <<: *default-proxies-anchor
+
   - name: 🎮 SteamCN
     <<: *all-proxies-anchor
     # use DIRECT by default
@@ -163,6 +166,10 @@ rule-providers:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs"
 
+  nikke:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/nikke.mrs"
+
   private:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"
@@ -197,24 +204,31 @@ rules:
   - RULE-SET,custom-direct,DIRECT
   - RULE-SET,custom-reject,REJECT
   - RULE-SET,custom-proxy,🚀 默认
+  # Meta Domain Reject
+  # None yet
+  # Meta Domain Selectable
+  - RULE-SET,bahamut,📹 Bahamut
+  - RULE-SET,microsoft,Ⓜ Microsoft
+  - RULE-SET,netflix,🎬 Netflix
+  - RULE-SET,nikke,🎮 Nikke
+  - RULE-SET,steam@cn,🎮 SteamCN
+  - RULE-SET,telegram,✈ Telegram
+  - RULE-SET,youtube,🎥 YouTube
   # Meta Domain Direct
   - RULE-SET,apple,DIRECT
   - RULE-SET,cn,DIRECT
   - RULE-SET,icloud,DIRECT
   - RULE-SET,private,DIRECT
-  # Meta Domain Selectable
-  - RULE-SET,bahamut,📹 Bahamut
-  - RULE-SET,microsoft,Ⓜ Microsoft
-  - RULE-SET,netflix,🎬 Netflix
-  - RULE-SET,steam@cn,🎮 SteamCN
-  - RULE-SET,telegram,✈ Telegram
-  - RULE-SET,youtube,🎥 YouTube
   # Meta Domain Proxy
+  # None yet
+  # Meta CIDR Reject
+  # None yet
+  # Meta CIDR Selectable
+  - RULE-SET,telegramcidr,✈ Telegram,no-resolve
   # Meta CIDR Direct
   - RULE-SET,cncidr,DIRECT,no-resolve
   - RULE-SET,privatecidr,DIRECT,no-resolve
-  # Meta CIDR Selectable
-  - RULE-SET,telegramcidr,✈ Telegram,no-resolve
   # Meta CIDR Proxy
+  # None yet
   # Others
   - MATCH,🚀 默认
