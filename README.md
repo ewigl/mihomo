@@ -1,8 +1,8 @@
 ## Mihomo 配置
 
-> Mihomo 配置文件，自带常用规则，适用于 Windows 和 Box for Root (Android)。
+> Mihomo Windows 配置文件。Box for Magisk 配置文件。
 
-### 使用文档
+### 配置文档
 
 https://ewigl.github.io/notes/posts/programming/mihomo-tun-guide/
 

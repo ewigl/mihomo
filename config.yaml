@@ -12,7 +12,9 @@ log-level: warning
 
 ######## web ui
 external-controller: :9090
-external-ui: metacubexd
+# external-ui: metacubexd
+external-ui: zashboard
+external-ui-url: "https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages.zip"
 secret: 998486
 profile:
   store-selected: true

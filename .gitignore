@@ -2,6 +2,7 @@ proxies/
 rules/
 ruleset/
 metacubexd/
+zashboard/
 meta-backup/
 cache.db
 GeoIP.dat
