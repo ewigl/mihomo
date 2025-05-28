@@ -80,6 +80,11 @@ proxy-groups:
     # use 🇨🇳 台湾 by default
     proxies: [🇨🇳 台湾, 🚀 默认, 🇺🇸 美国, 🇭🇰 香港, 🇸🇬 狮城, 🇯🇵 日本, DIRECT]
 
+  - name: 🔞 EHentai
+    <<: *all-proxies-anchor
+    # use 🇺🇸 美国 by default
+    proxies: [🇺🇸 美国, 🚀 默认, 🇨🇳 台湾, 🇭🇰 香港, 🇸🇬 狮城, 🇯🇵 日本, DIRECT]
+
   - name: Ⓜ Microsoft
     <<: *default-proxies-anchor
 
@@ -156,6 +161,10 @@ rule-providers:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs"
 
+  ehentai:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/ehentai.mrs"
+
   icloud:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/icloud.mrs"
@@ -210,6 +219,7 @@ rules:
   # None yet
   # Meta Domain Selectable
   - RULE-SET,bahamut,📹 Bahamut
+  - RULE-SET,ehentai,🔞 EHentai
   - RULE-SET,microsoft,Ⓜ Microsoft
   - RULE-SET,netflix,🎬 Netflix
   - RULE-SET,nikke,🎮 Nikke
