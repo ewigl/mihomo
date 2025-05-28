@@ -11,3 +11,5 @@ https://ewigl.github.io/notes/posts/programming/mihomo-tun-guide/
 ![00](https://ewigl.github.io/notes/posts/programming/mihomo-tun-guide/images/00.png)
 
 ![01](https://ewigl.github.io/notes/posts/programming/mihomo-tun-guide/images/01.png)
+
+![02](https://ewigl.github.io/notes/posts/programming/mihomo-tun-guide/images/02.png)
