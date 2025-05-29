@@ -77,34 +77,42 @@ proxy-groups:
     filter: "JP|🇯🇵|日本"
 
   # Services
-  - name: 📹 Bahamut
+  - name: Bahamut
+    icon: https://i2.bahamut.com.tw/favicon.svg
     <<: *all-proxies-anchor
     # use 🇨🇳 台湾 by default
     proxies: [🇨🇳 台湾, 🚀 默认, 🇺🇸 美国, 🇭🇰 香港, 🇸🇬 狮城, 🇯🇵 日本, DIRECT]
 
-  - name: 🔞 EHentai
+  - name: EHentai
+    icon: https://e-hentai.org/favicon.ico
     <<: *all-proxies-anchor
     # use 🇺🇸 美国 by default
     proxies: [🇺🇸 美国, 🚀 默认, 🇨🇳 台湾, 🇭🇰 香港, 🇸🇬 狮城, 🇯🇵 日本, DIRECT]
 
-  - name: Ⓜ Microsoft
+  - name: Microsoft
+    icon: https://www.microsoft.com/favicon.ico?v2
     <<: *default-proxies-anchor
 
-  - name: 🎬 Netflix
+  - name: Netflix
+    icon: https://www.netflix.com/favicon.ico
     <<: *default-proxies-anchor
 
-  - name: 🎮 Nikke
+  - name: Nikke
+    icon: https://nikke-en.com/favicon.ico
     <<: *default-proxies-anchor
 
-  - name: 🎮 SteamCN
+  - name: SteamCN
+    icon: https://store.steampowered.com/favicon.ico
     <<: *all-proxies-anchor
     # use DIRECT by default
     proxies: [DIRECT, 🚀 默认, 🇺🇸 美国, 🇨🇳 台湾, 🇭🇰 香港, 🇸🇬 狮城, 🇯🇵 日本]
 
-  - name: ✈ Telegram
+  - name: Telegram
+    icon: https://telegram.org/img/favicon.ico
     <<: *default-proxies-anchor
 
-  - name: 🎥 YouTube
+  - name: YouTube
+    icon: https://www.gstatic.com/youtube/img/branding/favicon/favicon_144x144_v2.png
     <<: *default-proxies-anchor
 
 ######## proxy providers
@@ -220,14 +228,14 @@ rules:
   # Meta Domain Reject
   # None yet
   # Meta Domain Selectable
-  - RULE-SET,bahamut,📹 Bahamut
-  - RULE-SET,ehentai,🔞 EHentai
-  - RULE-SET,microsoft,Ⓜ Microsoft
-  - RULE-SET,netflix,🎬 Netflix
-  - RULE-SET,nikke,🎮 Nikke
-  - RULE-SET,steam@cn,🎮 SteamCN
-  - RULE-SET,telegram,✈ Telegram
-  - RULE-SET,youtube,🎥 YouTube
+  - RULE-SET,bahamut,Bahamut
+  - RULE-SET,ehentai,EHentai
+  - RULE-SET,microsoft,Microsoft
+  - RULE-SET,netflix,Netflix
+  - RULE-SET,nikke,Nikke
+  - RULE-SET,steam@cn,SteamCN
+  - RULE-SET,telegram,Telegram
+  - RULE-SET,youtube,YouTube
   # Meta Domain Direct
   - RULE-SET,apple,DIRECT
   - RULE-SET,cn,DIRECT
@@ -238,7 +246,7 @@ rules:
   # Meta CIDR Reject
   # None yet
   # Meta CIDR Selectable
-  - RULE-SET,telegramcidr,✈ Telegram,no-resolve
+  - RULE-SET,telegramcidr,Telegram,no-resolve
   # Meta CIDR Direct
   - RULE-SET,cncidr,DIRECT,no-resolve
   - RULE-SET,privatecidr,DIRECT,no-resolve
