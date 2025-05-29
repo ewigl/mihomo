@@ -99,7 +99,8 @@ proxy-groups:
     <<: *default-proxies-anchor
 
   - name: Netflix
-    icon: https://netflix.com/favicon.ico
+    # icon: https://netflix.com/favicon.ico
+    icon: https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2023.ico
     <<: *default-proxies-anchor
 
   - name: Nikke
