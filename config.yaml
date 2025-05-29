@@ -10,6 +10,8 @@ allow-lan: true
 
 log-level: warning
 
+find-process-mode: always
+
 ######## web ui
 external-controller: :9090
 # external-ui: metacubexd
