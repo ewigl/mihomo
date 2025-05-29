@@ -57,27 +57,27 @@ proxy-groups:
 
   # Regions
   - name: 美国
-    icon: https://flagicons.lipis.dev/flags/4x3/us.svg
+    icon: https://flagicons.lipis.dev/flags/1x1/us.svg
     <<: *all-proxies-anchor
     filter: "US|🇺🇸|美国"
 
   - name: 台湾
-    icon: https://flagicons.lipis.dev/flags/4x3/cn.svg
+    icon: https://flagicons.lipis.dev/flags/1x1/cn.svg
     <<: *all-proxies-anchor
     filter: "TW|🇨🇳|🇹🇼|台湾"
 
   - name: 香港
-    icon: https://flagicons.lipis.dev/flags/4x3/hk.svg
+    icon: https://flagicons.lipis.dev/flags/1x1/hk.svg
     <<: *all-proxies-anchor
     filter: "HK|🇭🇰|香港"
 
   - name: 狮城
-    icon: https://flagicons.lipis.dev/flags/4x3/sg.svg
+    icon: https://flagicons.lipis.dev/flags/1x1/sg.svg
     <<: *all-proxies-anchor
     filter: "SG|🇸🇬|新加坡|狮城"
 
   - name: 日本
-    icon: https://flagicons.lipis.dev/flags/4x3/jp.svg
+    icon: https://flagicons.lipis.dev/flags/1x1/jp.svg
     <<: *all-proxies-anchor
     filter: "JP|🇯🇵|日本"
 
