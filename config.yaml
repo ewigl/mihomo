@@ -46,33 +46,38 @@ all-proxies-anchor: &all-proxies-anchor
 default-proxies-anchor: &default-proxies-anchor
   type: select
   include-all: true
-  proxies: [🚀 默认, 🇺🇸 美国, 🇨🇳 台湾, 🇭🇰 香港, 🇸🇬 狮城, 🇯🇵 日本, DIRECT]
+  proxies: [🚀 默认, 美国, 台湾, 香港, 狮城, 日本, DIRECT]
 
 ######## proxy groups
 proxy-groups:
   # Default
   - name: 🚀 默认
     <<: *all-proxies-anchor
-    proxies: [🇺🇸 美国, 🇨🇳 台湾, 🇭🇰 香港, 🇸🇬 狮城, 🇯🇵 日本]
+    proxies: [美国, 台湾, 香港, 狮城, 日本]
 
   # Regions
-  - name: 🇺🇸 美国
+  - name: 美国
+    icon: https://flagicons.lipis.dev/flags/4x3/us.svg
     <<: *all-proxies-anchor
     filter: "US|🇺🇸|美国"
 
-  - name: 🇨🇳 台湾
+  - name: 台湾
+    icon: https://flagicons.lipis.dev/flags/4x3/cn.svg
     <<: *all-proxies-anchor
     filter: "TW|🇨🇳|🇹🇼|台湾"
 
-  - name: 🇭🇰 香港
+  - name: 香港
+    icon: https://flagicons.lipis.dev/flags/4x3/hk.svg
     <<: *all-proxies-anchor
     filter: "HK|🇭🇰|香港"
 
-  - name: 🇸🇬 狮城
+  - name: 狮城
+    icon: https://flagicons.lipis.dev/flags/4x3/sg.svg
     <<: *all-proxies-anchor
     filter: "SG|🇸🇬|新加坡|狮城"
 
-  - name: 🇯🇵 日本
+  - name: 日本
+    icon: https://flagicons.lipis.dev/flags/4x3/jp.svg
     <<: *all-proxies-anchor
     filter: "JP|🇯🇵|日本"
 
@@ -80,21 +85,21 @@ proxy-groups:
   - name: Bahamut
     icon: https://i2.bahamut.com.tw/favicon.svg
     <<: *all-proxies-anchor
-    # use 🇨🇳 台湾 by default
-    proxies: [🇨🇳 台湾, 🚀 默认, 🇺🇸 美国, 🇭🇰 香港, 🇸🇬 狮城, 🇯🇵 日本, DIRECT]
+    # use 台湾 by default
+    proxies: [台湾, 🚀 默认, 美国, 香港, 狮城, 日本, DIRECT]
 
   - name: EHentai
     icon: https://e-hentai.org/favicon.ico
     <<: *all-proxies-anchor
-    # use 🇺🇸 美国 by default
-    proxies: [🇺🇸 美国, 🚀 默认, 🇨🇳 台湾, 🇭🇰 香港, 🇸🇬 狮城, 🇯🇵 日本, DIRECT]
+    # use 美国 by default
+    proxies: [美国, 🚀 默认, 台湾, 香港, 狮城, 日本, DIRECT]
 
   - name: Microsoft
-    icon: https://www.microsoft.com/favicon.ico?v2
+    icon: https://microsoft.com/favicon.ico?v2
     <<: *default-proxies-anchor
 
   - name: Netflix
-    icon: https://www.netflix.com/favicon.ico
+    icon: https://netflix.com/favicon.ico
     <<: *default-proxies-anchor
 
   - name: Nikke
@@ -105,14 +110,14 @@ proxy-groups:
     icon: https://store.steampowered.com/favicon.ico
     <<: *all-proxies-anchor
     # use DIRECT by default
-    proxies: [DIRECT, 🚀 默认, 🇺🇸 美国, 🇨🇳 台湾, 🇭🇰 香港, 🇸🇬 狮城, 🇯🇵 日本]
+    proxies: [DIRECT, 🚀 默认, 美国, 台湾, 香港, 狮城, 日本]
 
   - name: Telegram
     icon: https://telegram.org/img/favicon.ico
     <<: *default-proxies-anchor
 
   - name: YouTube
-    icon: https://www.gstatic.com/youtube/img/branding/favicon/favicon_144x144_v2.png
+    icon: https://gstatic.com/youtube/img/branding/favicon/favicon_144x144_v2.png
     <<: *default-proxies-anchor
 
 ######## proxy providers
