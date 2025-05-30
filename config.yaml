@@ -41,12 +41,12 @@ dns:
 ######## anchors in proxy groups
 all-proxies-anchor: &all-proxies-anchor
   type: select
-  include-all: true
+  include-all-providers: true
 
 default-proxies-anchor: &default-proxies-anchor
   type: select
-  include-all: true
-  proxies: [🚀 默认, 美国, 台湾, 香港, 狮城, 日本, DIRECT]
+  include-all-providers: true
+  proxies: [🚀 默认, 美国, 台湾, 香港, 狮城, 日本, ⚡ 直连]
 
 ######## proxy groups
 proxy-groups:
@@ -86,13 +86,13 @@ proxy-groups:
     icon: https://i2.bahamut.com.tw/favicon.svg
     <<: *all-proxies-anchor
     # use 台湾 by default
-    proxies: [台湾, 🚀 默认, 美国, 香港, 狮城, 日本, DIRECT]
+    proxies: [台湾, 🚀 默认, 美国, 香港, 狮城, 日本, ⚡ 直连]
 
   - name: EHentai
     icon: https://e-hentai.org/favicon.ico
     <<: *all-proxies-anchor
     # use 美国 by default
-    proxies: [美国, 🚀 默认, 台湾, 香港, 狮城, 日本, DIRECT]
+    proxies: [美国, 🚀 默认, 台湾, 香港, 狮城, 日本, ⚡ 直连]
 
   - name: Google
     icon: https://google.com/favicon.ico
@@ -119,8 +119,8 @@ proxy-groups:
   - name: SteamCN
     icon: https://store.steampowered.com/favicon.ico
     <<: *all-proxies-anchor
-    # use DIRECT by default
-    proxies: [DIRECT, 🚀 默认, 美国, 台湾, 香港, 狮城, 日本]
+    # use ⚡ 直连 by default
+    proxies: [⚡ 直连, 🚀 默认, 美国, 台湾, 香港, 狮城, 日本]
 
   - name: Telegram
     icon: https://telegram.org/img/favicon.ico
@@ -131,6 +131,11 @@ proxy-groups:
     <<: *all-proxies-anchor
     # use Google by default
     proxies: [Google, 🚀 默认, 美国, 台湾, 香港, 狮城, 日本]
+
+proxies:
+  - name: ⚡ 直连
+    type: direct
+    udp: true
 
 ######## proxy providers
 proxy-providers:
