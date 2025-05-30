@@ -128,7 +128,9 @@ proxy-groups:
 
   - name: YouTube
     icon: https://gstatic.com/youtube/img/branding/favicon/favicon_144x144_v2.png
-    <<: *default-proxies-anchor
+    <<: *all-proxies-anchor
+    # use Google by default
+    proxies: [Google, 🚀 默认, 美国, 台湾, 香港, 狮城, 日本]
 
 ######## proxy providers
 proxy-providers:
