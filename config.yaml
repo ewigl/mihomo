@@ -46,98 +46,98 @@ all-proxies-anchor: &all-proxies-anchor
 default-proxies-anchor: &default-proxies-anchor
   type: select
   include-all-providers: true
-  proxies: [🚀 默认, 美国, 台湾, 香港, 狮城, 日本, ⚡ 直连]
+  proxies: [默认, 美国, 台湾, 香港, 狮城, 日本, ⚡ 直连]
 
 ######## proxy groups
 proxy-groups:
   # Default
-  - name: 🚀 默认
+  - name: 默认
+    icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/default.png
     <<: *all-proxies-anchor
     proxies: [美国, 台湾, 香港, 狮城, 日本]
 
   # Regions
   - name: 美国
-    icon: https://flagicons.lipis.dev/flags/1x1/us.svg
+    icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/flags/us.png
     <<: *all-proxies-anchor
     filter: "US|🇺🇸|美国"
 
   - name: 台湾
-    icon: https://flagicons.lipis.dev/flags/1x1/cn.svg
+    icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/flags/cn.png
     <<: *all-proxies-anchor
     filter: "TW|🇨🇳|🇹🇼|台湾"
 
   - name: 香港
-    icon: https://flagicons.lipis.dev/flags/1x1/hk.svg
+    icon: http://raw.githubusercontent.com/ewigl/licons/refs/heads/main/flags/hk.png
     <<: *all-proxies-anchor
     filter: "HK|🇭🇰|香港"
 
   - name: 狮城
-    icon: https://flagicons.lipis.dev/flags/1x1/sg.svg
+    icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/flags/sg.png
     <<: *all-proxies-anchor
     filter: "SG|🇸🇬|新加坡|狮城"
 
   - name: 日本
-    icon: https://flagicons.lipis.dev/flags/1x1/jp.svg
+    icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/flags/jp.png
     <<: *all-proxies-anchor
     filter: "JP|🇯🇵|日本"
 
   # Services
   - name: Bahamut
-    icon: https://i2.bahamut.com.tw/favicon.svg
+    icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/bahamut.png
     <<: *all-proxies-anchor
     # use 台湾 by default
-    proxies: [台湾, 🚀 默认, 美国, 香港, 狮城, 日本, ⚡ 直连]
+    proxies: [台湾, 默认, 美国, 香港, 狮城, 日本, ⚡ 直连]
 
   - name: EHentai
-    icon: https://e-hentai.org/favicon.ico
+    icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/e-hentai.png
     <<: *all-proxies-anchor
     # use 美国 by default
-    proxies: [美国, 🚀 默认, 台湾, 香港, 狮城, 日本, ⚡ 直连]
+    proxies: [美国, 默认, 台湾, 香港, 狮城, 日本, ⚡ 直连]
 
   - name: Google
-    icon: https://google.com/favicon.ico
+    icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/google.png
     <<: *default-proxies-anchor
 
   - name: Microsoft
-    icon: https://microsoft.com/favicon.ico?v2
+    icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/microsoft.png
     <<: *default-proxies-anchor
 
   - name: Netflix
-    # icon: https://netflix.com/favicon.ico
-    icon: https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2023.ico
+    icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/netflix.png
     <<: *default-proxies-anchor
 
   - name: Nikke
-    icon: https://nikke-en.com/favicon.ico
+    icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/nikke.png
     <<: *default-proxies-anchor
 
   - name: Spotify
-    icon: https://open.spotifycdn.com/cdn/images/favicon.0f31d2ea.ico
-    # icon: https://open.spotifycdn.com/cdn/images/icons/Spotify_256.17e41e58.png
+    icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/spotify.png
     <<: *default-proxies-anchor
 
   - name: SteamCN
-    icon: https://store.steampowered.com/favicon.ico
+    icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/steam.png
     <<: *all-proxies-anchor
     # use ⚡ 直连 by default
-    proxies: [⚡ 直连, 🚀 默认, 美国, 台湾, 香港, 狮城, 日本]
+    proxies: [⚡ 直连, 默认, 美国, 台湾, 香港, 狮城, 日本]
 
   - name: Telegram
-    icon: https://telegram.org/img/favicon.ico
+    icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/telegram.png
     <<: *default-proxies-anchor
 
   - name: YouTube
-    icon: https://gstatic.com/youtube/img/branding/favicon/favicon_144x144_v2.png
+    icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/youtube.png
     <<: *all-proxies-anchor
     # use Google by default
-    proxies: [Google, 🚀 默认, 美国, 台湾, 香港, 狮城, 日本]
+    proxies: [Google, 默认, 美国, 台湾, 香港, 狮城, 日本]
 
   - name: GLOBAL
+    icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/global.png
     type: select
     include-all-providers: true
     proxies:
       [
-        🚀 默认,
+        默认,
         美国,
         台湾,
         香港,
@@ -278,7 +278,7 @@ rules:
   # Custom Local Rules
   - RULE-SET,custom-reject,REJECT
   - RULE-SET,custom-direct,DIRECT
-  - RULE-SET,custom-proxy,🚀 默认
+  - RULE-SET,custom-proxy,默认
   # Meta Domain
   # Reject
   #
@@ -313,4 +313,4 @@ rules:
   # Selectable
   - RULE-SET,telegramcidr,Telegram,no-resolve
   # Others
-  - MATCH,🚀 默认
+  - MATCH,默认
