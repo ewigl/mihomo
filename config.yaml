@@ -132,6 +132,30 @@ proxy-groups:
     # use Google by default
     proxies: [Google, 🚀 默认, 美国, 台湾, 香港, 狮城, 日本]
 
+  - name: GLOBAL
+    type: select
+    include-all-providers: true
+    proxies:
+      [
+        🚀 默认,
+        美国,
+        台湾,
+        香港,
+        狮城,
+        日本,
+        ⚡ 直连,
+        Bahamut,
+        EHentai,
+        Google,
+        Microsoft,
+        Netflix,
+        Nikke,
+        Spotify,
+        SteamCN,
+        Telegram,
+        YouTube,
+      ]
+
 proxies:
   - name: ⚡ 直连
     type: direct
