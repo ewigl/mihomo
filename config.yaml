@@ -111,6 +111,11 @@ proxy-groups:
     icon: https://nikke-en.com/favicon.ico
     <<: *default-proxies-anchor
 
+  - name: Spotify
+    icon: https://open.spotifycdn.com/cdn/images/favicon.0f31d2ea.ico
+    # icon: https://open.spotifycdn.com/cdn/images/icons/Spotify_256.17e41e58.png
+    <<: *default-proxies-anchor
+
   - name: SteamCN
     icon: https://store.steampowered.com/favicon.ico
     <<: *all-proxies-anchor
@@ -209,6 +214,10 @@ rule-providers:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"
 
+  spotify:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/spotify.mrs"
+
   steam@cn:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/steam@cn.mrs"
@@ -236,36 +245,39 @@ rule-providers:
 
 rules:
   # Custom Local Rules
-  - RULE-SET,custom-direct,DIRECT
   - RULE-SET,custom-reject,REJECT
+  - RULE-SET,custom-direct,DIRECT
   - RULE-SET,custom-proxy,🚀 默认
-  # Meta Domain Reject
-  # None yet
-  # Meta Domain Selectable
+  # Meta Domain
+  # Reject
+  #
+  # Direct
+  - RULE-SET,apple,DIRECT
+  - RULE-SET,cn,DIRECT
+  - RULE-SET,icloud,DIRECT
+  - RULE-SET,private,DIRECT
+  # Proxy
+  #
+  # Selectable
   - RULE-SET,bahamut,Bahamut
   - RULE-SET,ehentai,EHentai
   - RULE-SET,google,Google
   - RULE-SET,microsoft,Microsoft
   - RULE-SET,netflix,Netflix
   - RULE-SET,nikke,Nikke
+  - RULE-SET,spotify,Spotify
   - RULE-SET,steam@cn,SteamCN
   - RULE-SET,telegram,Telegram
   - RULE-SET,youtube,YouTube
-  # Meta Domain Direct
-  - RULE-SET,apple,DIRECT
-  - RULE-SET,cn,DIRECT
-  - RULE-SET,icloud,DIRECT
-  - RULE-SET,private,DIRECT
-  # Meta Domain Proxy
-  # None yet
-  # Meta CIDR Reject
-  # None yet
-  # Meta CIDR Selectable
-  - RULE-SET,telegramcidr,Telegram,no-resolve
-  # Meta CIDR Direct
+  # Meta CIDR
+  ## Reject
+  #
+  # Direct
   - RULE-SET,cncidr,DIRECT,no-resolve
   - RULE-SET,privatecidr,DIRECT,no-resolve
-  # Meta CIDR Proxy
-  # None yet
+  # Proxy
+  #
+  # Selectable
+  - RULE-SET,telegramcidr,Telegram,no-resolve
   # Others
   - MATCH,🚀 默认
