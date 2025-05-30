@@ -86,14 +86,17 @@ proxy-groups:
   - name: Bahamut
     icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/bahamut.png
     <<: *all-proxies-anchor
-    # use 台湾 by default
     proxies: [台湾, 默认, 美国, 香港, 狮城, 日本, ⚡ 直连]
 
   - name: EHentai
     icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/e-hentai.png
     <<: *all-proxies-anchor
-    # use 美国 by default
     proxies: [美国, 默认, 台湾, 香港, 狮城, 日本, ⚡ 直连]
+
+  - name: Github
+    icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/github.png
+    <<: *all-proxies-anchor
+    proxies: [Microsoft, 默认, 美国, 台湾, 香港, 狮城, 日本, ⚡ 直连]
 
   - name: Google
     icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/google.png
@@ -118,7 +121,6 @@ proxy-groups:
   - name: SteamCN
     icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/steam.png
     <<: *all-proxies-anchor
-    # use ⚡ 直连 by default
     proxies: [⚡ 直连, 默认, 美国, 台湾, 香港, 狮城, 日本]
 
   - name: Telegram
@@ -128,7 +130,6 @@ proxy-groups:
   - name: YouTube
     icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/youtube.png
     <<: *all-proxies-anchor
-    # use Google by default
     proxies: [Google, 默认, 美国, 台湾, 香港, 狮城, 日本]
 
   - name: GLOBAL
@@ -146,6 +147,7 @@ proxy-groups:
         ⚡ 直连,
         Bahamut,
         EHentai,
+        Github,
         Google,
         Microsoft,
         Netflix,
@@ -221,6 +223,10 @@ rule-providers:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/ehentai.mrs"
 
+  github:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.mrs"
+
   google:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs"
@@ -281,22 +287,22 @@ rules:
   - RULE-SET,custom-proxy,默认
   # Meta Domain
   # Reject
-  #
   # Direct
   - RULE-SET,apple,DIRECT
   - RULE-SET,cn,DIRECT
   - RULE-SET,icloud,DIRECT
   - RULE-SET,private,DIRECT
   # Proxy
-  #
   # Selectable
   - RULE-SET,bahamut,Bahamut
   - RULE-SET,ehentai,EHentai
-  # Google
+  # -Google-
   - RULE-SET,youtube,YouTube
   - RULE-SET,google,Google
-  #
+  # -Microsoft-
+  - RULE-SET,github,Github
   - RULE-SET,microsoft,Microsoft
+  # -Others-
   - RULE-SET,netflix,Netflix
   - RULE-SET,nikke,Nikke
   - RULE-SET,spotify,Spotify
@@ -304,12 +310,10 @@ rules:
   - RULE-SET,telegram,Telegram
   # Meta CIDR
   ## Reject
-  #
   # Direct
   - RULE-SET,cncidr,DIRECT,no-resolve
   - RULE-SET,privatecidr,DIRECT,no-resolve
   # Proxy
-  #
   # Selectable
   - RULE-SET,telegramcidr,Telegram,no-resolve
   # Others
