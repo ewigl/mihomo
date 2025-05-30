@@ -261,14 +261,16 @@ rules:
   # Selectable
   - RULE-SET,bahamut,Bahamut
   - RULE-SET,ehentai,EHentai
+  # Google
+  - RULE-SET,youtube,YouTube
   - RULE-SET,google,Google
+  #
   - RULE-SET,microsoft,Microsoft
   - RULE-SET,netflix,Netflix
   - RULE-SET,nikke,Nikke
   - RULE-SET,spotify,Spotify
   - RULE-SET,steam@cn,SteamCN
   - RULE-SET,telegram,Telegram
-  - RULE-SET,youtube,YouTube
   # Meta CIDR
   ## Reject
   #
