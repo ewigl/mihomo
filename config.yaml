@@ -94,6 +94,10 @@ proxy-groups:
     # use 美国 by default
     proxies: [美国, 🚀 默认, 台湾, 香港, 狮城, 日本, DIRECT]
 
+  - name: Google
+    icon: https://google.com/favicon.ico
+    <<: *default-proxies-anchor
+
   - name: Microsoft
     icon: https://microsoft.com/favicon.ico?v2
     <<: *default-proxies-anchor
@@ -181,6 +185,10 @@ rule-providers:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/ehentai.mrs"
 
+  google:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs"
+
   icloud:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/icloud.mrs"
@@ -236,6 +244,7 @@ rules:
   # Meta Domain Selectable
   - RULE-SET,bahamut,Bahamut
   - RULE-SET,ehentai,EHentai
+  - RULE-SET,google,Google
   - RULE-SET,microsoft,Microsoft
   - RULE-SET,netflix,Netflix
   - RULE-SET,nikke,Nikke
