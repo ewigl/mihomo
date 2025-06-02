@@ -52,27 +52,27 @@ proxy-groups:
   - name: 美国
     icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/flags/us.png
     <<: *all-proxies
-    filter: "US|🇺🇸|美国"
+    filter: "US|🇺🇸|美国|United States"
 
   - name: 台湾
     icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/flags/cn.png
     <<: *all-proxies
-    filter: "TW|🇨🇳|🇹🇼|台湾"
+    filter: "TW|🇨🇳|🇹🇼|台湾|Taiwan"
 
   - name: 香港
     icon: http://raw.githubusercontent.com/ewigl/licons/refs/heads/main/flags/hk.png
     <<: *all-proxies
-    filter: "HK|🇭🇰|香港"
+    filter: "HK|🇭🇰|香港|HongKong|Hong Kong"
 
   - name: 狮城
     icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/flags/sg.png
     <<: *all-proxies
-    filter: "SG|🇸🇬|新加坡|狮城"
+    filter: "SG|🇸🇬|新加坡|狮城|Singapore"
 
   - name: 日本
     icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/flags/jp.png
     <<: *all-proxies
-    filter: "JP|🇯🇵|日本"
+    filter: "JP|🇯🇵|日本|Japan"
 
   # Services
   - name: Bahamut
