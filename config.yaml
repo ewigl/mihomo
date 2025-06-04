@@ -1,5 +1,3 @@
-redir-port: 9797
-tproxy-port: 9898
 mixed-port: 8486
 
 mode: rule
@@ -8,6 +6,8 @@ allow-lan: true
 log-level: warning
 
 find-process-mode: always
+
+tcp-concurrent: true
 
 external-controller: :9090
 external-ui: zashboard
@@ -21,9 +21,11 @@ tun:
   enable: true
   stack: mixed
   auto-route: true
+  auto-redirect: true
   auto-detect-interface: true
   dns-hijack:
     - any:53
+    - tcp://any:53
 
 dns:
   enable: true
