@@ -96,6 +96,10 @@ proxy-groups:
     icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/google.png
     <<: *default-proxies
 
+  - name: Imgur
+    icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/imgur.png
+    <<: *default-proxies
+
   - name: Microsoft
     icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/microsoft.png
     <<: *default-proxies
@@ -147,6 +151,7 @@ proxy-groups:
         EHentai,
         Github,
         Google,
+        Imgur,
         Microsoft,
         Netflix,
         Nikke,
@@ -232,6 +237,10 @@ rule-providers:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/icloud.mrs"
 
+  imgur:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/imgur.mrs"
+
   microsoft:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft.mrs"
@@ -297,6 +306,7 @@ rules:
   ## Selectable
   - RULE-SET,bahamut,Bahamut
   - RULE-SET,ehentai,EHentai
+  - RULE-SET,imgur,Imgur
   - RULE-SET,netflix,Netflix
   - RULE-SET,nikke,Nikke
   - RULE-SET,spotify,Spotify
