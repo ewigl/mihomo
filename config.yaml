@@ -117,6 +117,10 @@ proxy-groups:
     <<: *all-proxies
     proxies: [⚡ 直连, 默认, 美国, 台湾, 香港, 狮城, 日本]
 
+  - name: SteamGlobal
+    icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/steam.png
+    <<: *default-proxies
+
   - name: Telegram
     icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/telegram.png
     <<: *default-proxies
@@ -148,6 +152,7 @@ proxy-groups:
         Nikke,
         Spotify,
         SteamCN,
+        SteamGlobal,
         Telegram,
         YouTube,
       ]
@@ -181,7 +186,7 @@ rule-anchor:
   cidr: &cidr { type: http, interval: 86400, behavior: ipcidr, format: mrs }
 
 rule-providers:
-  # Custom Local Rules
+  # Local Rule Sets
   custom-direct:
     type: file
     behavior: domain
@@ -197,8 +202,8 @@ rule-providers:
     behavior: domain
     path: ./custom-rules/reject.yaml
 
-  # Meta Rules https://github.com/MetaCubeX/meta-rules-dat/blob/meta/geo/geosite
-  # Domain Rules
+  # Meta Rule Sets https://github.com/MetaCubeX/meta-rules-dat/blob/meta/geo/geosite
+  ## Domain Rule Sets
   apple:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/apple.mrs"
@@ -247,6 +252,10 @@ rule-providers:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/spotify.mrs"
 
+  steam:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/steam.mrs"
+
   steam@cn:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/steam@cn.mrs"
@@ -259,7 +268,7 @@ rule-providers:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs"
 
-  # CIDR Rules
+  ## CIDR Rule Sets
   cncidr:
     <<: *cidr
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs"
@@ -273,40 +282,41 @@ rule-providers:
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat//meta/geo/geoip/telegram.mrs"
 
 rules:
+  # !Orders Matter!
   # Custom Local Rules
   - RULE-SET,custom-reject,REJECT
   - RULE-SET,custom-direct,DIRECT
   - RULE-SET,custom-proxy,默认
-  # Meta Domain
-  # Reject
-  # Direct
+  # Meta Domain Rules
+  ## Reject
+  ## Direct
   - RULE-SET,apple,DIRECT
   - RULE-SET,cn,DIRECT
   - RULE-SET,icloud,DIRECT
   - RULE-SET,private,DIRECT
-  # Proxy
-  # Selectable
+  ## Selectable
   - RULE-SET,bahamut,Bahamut
   - RULE-SET,ehentai,EHentai
-  # -Google-
-  - RULE-SET,youtube,YouTube
-  - RULE-SET,google,Google
-  # -Microsoft-
-  - RULE-SET,github,Github
-  - RULE-SET,microsoft,Microsoft
-  # -Others-
   - RULE-SET,netflix,Netflix
   - RULE-SET,nikke,Nikke
   - RULE-SET,spotify,Spotify
-  - RULE-SET,steam@cn,SteamCN
   - RULE-SET,telegram,Telegram
-  # Meta CIDR
+  ### Google
+  - RULE-SET,youtube,YouTube
+  - RULE-SET,google,Google
+  ### Microsoft
+  - RULE-SET,github,Github
+  - RULE-SET,microsoft,Microsoft
+  ### Steam
+  - RULE-SET,steam@cn,SteamCN
+  - RULE-SET,steam,SteamGlobal
+  # Meta CIDR Rules
   ## Reject
-  # Direct
+  ## Direct
   - RULE-SET,cncidr,DIRECT,no-resolve
   - RULE-SET,privatecidr,DIRECT,no-resolve
-  # Proxy
-  # Selectable
+  ## Proxy
+  ## Selectable
   - RULE-SET,telegramcidr,Telegram,no-resolve
   # Others
   - MATCH,默认
