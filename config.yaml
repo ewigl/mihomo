@@ -82,6 +82,11 @@ proxy-groups:
     <<: *all-proxies
     proxies: [台湾, 默认, 美国, 香港, 狮城, 日本, ⚡ 直连]
 
+  - name: DLsite
+    icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/dlsite.png
+    <<: *all-proxies
+    proxies: [日本, 默认, 美国, 台湾, 香港, 狮城, ⚡ 直连]
+
   - name: EHentai
     icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/e-hentai.png
     <<: *all-proxies
@@ -148,6 +153,7 @@ proxy-groups:
         日本,
         ⚡ 直连,
         Bahamut,
+        DLsite,
         EHentai,
         Github,
         Google,
@@ -220,6 +226,10 @@ rule-providers:
   cn:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs"
+
+  dlsite:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/dlsite.mrs"
 
   ehentai:
     <<: *domain
@@ -305,6 +315,7 @@ rules:
   - RULE-SET,private,DIRECT
   ## Selectable
   - RULE-SET,bahamut,Bahamut
+  - RULE-SET,dlsite,DLsite
   - RULE-SET,ehentai,EHentai
   - RULE-SET,imgur,Imgur
   - RULE-SET,netflix,Netflix
