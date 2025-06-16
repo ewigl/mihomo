@@ -301,7 +301,7 @@ rule-providers:
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat//meta/geo/geoip/telegram.mrs"
 
 rules:
-  # !Orders Matter!
+  # !Order Matters!
   # Custom Local Rules
   - RULE-SET,custom-reject,REJECT
   - RULE-SET,custom-direct,DIRECT
