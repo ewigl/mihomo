@@ -92,6 +92,11 @@ proxy-groups:
     <<: *all-proxies
     proxies: [美国, 默认, 台湾, 香港, 狮城, 日本, ⚡ 直连]
 
+  - name: EpicGames
+    icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/epic-games.png
+    <<: *all-proxies
+    proxies: [⚡ 直连, 默认, 美国, 台湾, 香港, 狮城, 日本]
+
   - name: Github
     icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/github.png
     <<: *all-proxies
@@ -155,6 +160,7 @@ proxy-groups:
         Bahamut,
         DLsite,
         EHentai,
+        EpicGames,
         Github,
         Google,
         Imgur,
@@ -234,6 +240,10 @@ rule-providers:
   ehentai:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/ehentai.mrs"
+
+  epicgames:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/epicgames.mrs"
 
   github:
     <<: *domain
@@ -317,6 +327,7 @@ rules:
   - RULE-SET,bahamut,Bahamut
   - RULE-SET,dlsite,DLsite
   - RULE-SET,ehentai,EHentai
+  - RULE-SET,epicgames,EpicGames
   - RULE-SET,imgur,Imgur
   - RULE-SET,netflix,Netflix
   - RULE-SET,nikke,Nikke
