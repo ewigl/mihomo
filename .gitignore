@@ -5,7 +5,4 @@ metacubexd/
 zashboard/
 meta-backup/
 cache.db
-GeoIP.dat
-geoip.metadb
-GeoSite.dat
 mihomo-windows-amd64.exe
