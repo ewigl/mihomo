@@ -4,13 +4,13 @@
 
 ### 简介信息
 
-- Windows 内核默认使用 `mihomo-windows-amd64` 版本，Android 内核默认使用 `mihomo-android-arm64-v8` 版本。
-- 手写分流规则，白名单模式（没有设置规则的网络流量，使用代理），规则集使用[官方规则集](https://github.com/MetaCubeX/meta-rules-dat)。
-- 图标使用[自收集图标](https://github.com/ewigl/licons)，来源于网络。
-- Dashboard 使用 [Zashboard](https://github.com/Zephyruso/zashboard).
+- Release 中的 Windows 内核使用 `amd64` 版本，Android 内核使用 `arm64-v8` 版本。
+- 自定义白名单模式规则（未匹配规则的流量使用代理），规则集使用 [Mihomo 官方规则集](https://github.com/MetaCubeX/meta-rules-dat)。
+- 控制台 WEB UI 使用 [Zashboard](https://github.com/Zephyruso/zashboard).
+- 分组图标[来源于网络](https://github.com/ewigl/licons)。
 - 参考：[官方文档](https://wiki.metacubex.one/config/)。
 
-### 使用说明
+### 使用方法
 
 https://ewigl.github.io/notes/posts/programming/mihomo-tun-guide/
 
