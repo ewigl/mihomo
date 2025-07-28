@@ -37,7 +37,7 @@ jobs:
     uses: ./.github/workflows/build.yml
     with:
       platform: windows
-      mihomo_asset_keyword: '^mihomo-windows-amd64-v.*?\\.zip$'
+      mihomo_asset_keyword: '^mihomo-windows-amd64-v3-v.*?\\.zip$'
       mihomo_archive_type: zip
 
   build-android:
