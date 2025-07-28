@@ -4,7 +4,7 @@
 
 ### 简介信息
 
-- Release 中的 Windows 内核使用 `amd64` 版本，Android 内核使用 `arm64-v8` 版本。
+- Release 中的 Windows 内核使用 `amd64-v3` 版本，Android 内核使用 `arm64-v8` 版本。
 - 自定义规则，规则集使用 [Mihomo 官方规则集](https://github.com/MetaCubeX/meta-rules-dat)。
 - 控制台 WEB UI 使用 [Zashboard](https://github.com/Zephyruso/zashboard).
 - 分组图标[来源于网络](https://github.com/ewigl/licons)。
