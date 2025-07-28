@@ -113,8 +113,7 @@ jobs:
           LATEST_MIHOMO_RELEASE_JSON=$(curl -s https://api.github.com/repos/${{ env.MIHOMO_REPO }}/releases/latest)
           MIHOMO_ASSET_INFO=$(echo "$LATEST_MIHOMO_RELEASE_JSON" | jq -r '.assets[] | select(.name | test("${{ inputs.mihomo_asset_keyword }}"))')
           MIHOMO_URL=$(echo "$MIHOMO_ASSET_INFO" | jq -r '.browser_download_url')
-          # MIHOMO_FILENAME=$(echo "$MIHOMO_ASSET_INFO" | jq -r '.name')
-          MIHOMO_FILENAME="mihomo-windows-amd64.exe"
+          MIHOMO_FILENAME=$(echo "$MIHOMO_ASSET_INFO" | jq -r '.name')
 
           if [ -z "$MIHOMO_URL" ] || [ "$MIHOMO_URL" == "null" ]; then
             echo "::Error::Unable to find latest url for Mihomo (${{ inputs.platform }})."
@@ -125,6 +124,7 @@ jobs:
 
           if [[ "${{ inputs.mihomo_archive_type }}" == "zip" ]]; then # Windows
             unzip -q "$MIHOMO_FILENAME" -d staging-windows/
+            mv staging-windows/mihomo-windows-amd64-v3.exe staging-windows/mihomo-windows-amd64.exe
             rm "$MIHOMO_FILENAME"
           else # Android
             gunzip "$MIHOMO_FILENAME"
