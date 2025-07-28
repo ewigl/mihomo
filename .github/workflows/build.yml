@@ -114,7 +114,7 @@ jobs:
           MIHOMO_ASSET_INFO=$(echo "$LATEST_MIHOMO_RELEASE_JSON" | jq -r '.assets[] | select(.name | test("${{ inputs.mihomo_asset_keyword }}"))')
           MIHOMO_URL=$(echo "$MIHOMO_ASSET_INFO" | jq -r '.browser_download_url')
           # MIHOMO_FILENAME=$(echo "$MIHOMO_ASSET_INFO" | jq -r '.name')
-          # MIHOMO_FILENAME="mihomo-windows-amd64.exe"
+          MIHOMO_FILENAME="mihomo-windows-amd64.exe"
 
           if [ -z "$MIHOMO_URL" ] || [ "$MIHOMO_URL" == "null" ]; then
             echo "::Error::Unable to find latest url for Mihomo (${{ inputs.platform }})."
