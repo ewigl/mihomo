@@ -45,7 +45,7 @@ proxy-providers:
   #   health-check:
   #     enable: true
   #     url: http://www.gstatic.com/generate_204
-  #     interval: 7200
+  #     interval: 86400
   #   override:
   #     additional-prefix: "Local"
   #     additional-suffix: "suffix"
@@ -56,7 +56,7 @@ proxy-providers:
     health-check:
       enable: true
       url: http://www.gstatic.com/generate_204
-      interval: 7200
+      interval: 86400
     override:
       # additional-prefix: "prefix"
       # additional-suffix: "suffix"
@@ -66,45 +66,54 @@ proxies-anchor:
     type: select
     include-all-providers: true
 
+  all-proxies-auto-select: &all-proxies-auto-select
+    type: url-test
+    include-all-providers: true
+
   default-proxies: &default-proxies
     type: select
     include-all-providers: true
     proxies: [默认, 美国, 台湾, 香港, 狮城, 日本, ⚡ 直连]
 
 proxy-groups:
-  # Default
+  # 默认
   - name: 默认
     icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/default.png
-    <<: *all-proxies
-    proxies: [美国, 台湾, 香港, 狮城, 日本, ⚡ 直连]
+    type: select
+    proxies: [自动选择, 美国, 台湾, 香港, 狮城, 日本, ⚡ 直连]
 
-  # Regions
+  # 自动选择
+  - name: 自动选择
+    icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/auto.png
+    <<: *all-proxies-auto-select
+
+  # 区域
   - name: 美国
     icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/flags/us.png
-    <<: *all-proxies
+    <<: *all-proxies-auto-select
     filter: "US|🇺🇸|美国|United States"
 
   - name: 台湾
     icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/flags/cn.png
-    <<: *all-proxies
+    <<: *all-proxies-auto-select
     filter: "TW|🇨🇳|🇹🇼|台湾|Taiwan"
 
   - name: 香港
     icon: http://raw.githubusercontent.com/ewigl/licons/refs/heads/main/flags/hk.png
-    <<: *all-proxies
+    <<: *all-proxies-auto-select
     filter: "HK|🇭🇰|香港|HongKong|Hong Kong"
 
   - name: 狮城
     icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/flags/sg.png
-    <<: *all-proxies
+    <<: *all-proxies-auto-select
     filter: "SG|🇸🇬|新加坡|狮城|Singapore"
 
   - name: 日本
     icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/flags/jp.png
-    <<: *all-proxies
+    <<: *all-proxies-auto-select
     filter: "JP|🇯🇵|日本|Japan"
 
-  # Services
+  # 服务
   - name: Bahamut
     icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/bahamut.png
     <<: *all-proxies
@@ -172,6 +181,12 @@ proxy-groups:
     <<: *all-proxies
     proxies: [Google, 默认, 美国, 台湾, 香港, 狮城, 日本]
 
+  # 其他
+  - name: 其他
+    icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/misc.png
+    <<: *default-proxies
+
+  # 全局
   - name: GLOBAL
     icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/global.png
     type: select
@@ -179,6 +194,7 @@ proxy-groups:
     proxies:
       [
         默认,
+        自动选择,
         美国,
         台湾,
         香港,
@@ -200,6 +216,7 @@ proxy-groups:
         SteamGlobal,
         Telegram,
         YouTube,
+        其他,
       ]
 
 rule-anchor:
@@ -355,4 +372,4 @@ rules:
   ## Selectable
   - RULE-SET,telegramcidr,Telegram,no-resolve
   # Others
-  - MATCH,默认
+  - MATCH,其他
