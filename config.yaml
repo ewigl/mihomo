@@ -5,6 +5,8 @@ allow-lan: true
 
 log-level: warning
 
+ipv6: true
+
 find-process-mode: always
 
 tcp-concurrent: true
@@ -45,6 +47,7 @@ tun:
 
 dns:
   enable: true
+  ipv6: true
   listen: :53
   enhanced-mode: fake-ip
   fake-ip-range: 16.0.0.1/8
