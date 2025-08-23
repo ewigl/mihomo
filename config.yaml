@@ -174,10 +174,6 @@ proxy-groups:
     icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/netflix.png
     <<: *default-proxies
 
-  - name: Nikke
-    icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/nikke.png
-    <<: *default-proxies
-
   - name: Spotify
     icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/spotify.png
     <<: *default-proxies
@@ -229,7 +225,6 @@ proxy-groups:
         Imgur,
         Microsoft,
         Netflix,
-        Nikke,
         Spotify,
         SteamCN,
         SteamGlobal,
@@ -309,10 +304,6 @@ rule-providers:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs"
 
-  nikke:
-    <<: *domain
-    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/nikke.mrs"
-
   private:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"
@@ -370,7 +361,6 @@ rules:
   - RULE-SET,epicgames,EpicGames
   - RULE-SET,imgur,Imgur
   - RULE-SET,netflix,Netflix
-  - RULE-SET,nikke,Nikke
   - RULE-SET,spotify,Spotify
   - RULE-SET,telegram,Telegram
   ### Google
