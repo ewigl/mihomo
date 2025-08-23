@@ -58,17 +58,6 @@ proxies:
     udp: true
 
 proxy-providers:
-  # Local:
-  #   type: file
-  #   path: ./proxies/Local.yaml
-  #   health-check:
-  #     enable: true
-  #     url: http://www.gstatic.com/generate_204
-  #     interval: 86400
-  #   override:
-  #     additional-prefix: "Local"
-  #     additional-suffix: "suffix"
-
   Subscription:
     type: http
     url: http://192.168.8.1:8848/proxy-providers.yaml
