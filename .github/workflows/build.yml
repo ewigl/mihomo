@@ -67,10 +67,6 @@ jobs:
           fi
           echo "Copying files to $TARGET_DIR/"
 
-          if [ -d "custom-rules" ]; then
-            cp -r custom-rules/ "$TARGET_DIR"/
-          fi
-
           if [[ "${{ inputs.platform }}" == "windows" ]]; then
             find . -maxdepth 1 -type f \( -name "*.bat" -o -name "*.vbs" -o -name "*.xml" -o -name "*.yaml" \) -exec cp {} "$TARGET_DIR"/ \;
           else

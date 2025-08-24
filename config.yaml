@@ -227,22 +227,6 @@ rule-anchor:
   cidr: &cidr { type: http, interval: 86400, behavior: ipcidr, format: mrs }
 
 rule-providers:
-  # Local Rule Sets
-  custom-direct:
-    type: file
-    behavior: domain
-    path: ./custom-rules/direct.yaml
-
-  custom-proxy:
-    type: file
-    behavior: domain
-    path: ./custom-rules/proxy.yaml
-
-  custom-reject:
-    type: file
-    behavior: domain
-    path: ./custom-rules/reject.yaml
-
   # Meta Rule Sets https://github.com/MetaCubeX/meta-rules-dat/blob/meta/geo/geosite
   ## Domain Rule Sets
   apple:
@@ -332,10 +316,6 @@ rule-providers:
 
 rules:
   # !Order Matters!
-  # Custom Local Rules
-  - RULE-SET,custom-reject,REJECT
-  - RULE-SET,custom-direct,DIRECT
-  - RULE-SET,custom-proxy,默认
   # Meta Domain Rules
   ## Reject
   ## Direct
