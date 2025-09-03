@@ -63,7 +63,6 @@ jobs:
           name: raw-artifacts
           path: |
             config.yaml
-            zashboard-settings.json
 
   create-release:
     runs-on: ubuntu-latest
