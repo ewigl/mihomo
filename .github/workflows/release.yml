@@ -49,6 +49,7 @@ jobs:
       mihomo_archive_type: gz
 
   upload-raw:
+    needs: setup-and-tag
     runs-on: ubuntu-latest
     permissions:
       contents: read
