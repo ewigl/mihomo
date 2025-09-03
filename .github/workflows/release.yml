@@ -48,11 +48,24 @@ jobs:
       mihomo_asset_keyword: '^mihomo-android-arm64-v8-v.*?\\.gz$'
       mihomo_archive_type: gz
 
+  upload-raw:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Upload Raw Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: raw-artifacts
+          path: |
+            config.yaml
+            zashboard-settings.json
+
   create-release:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    needs: [setup-and-tag, build-windows, build-android]
+    needs: [setup-and-tag, build-windows, build-android, upload-raw]
     steps:
       - name: Download all artifacts
         uses: actions/download-artifact@v4
@@ -64,7 +77,7 @@ jobs:
         with:
           tag_name: ${{ needs.setup-and-tag.outputs.tag_name }}
           name: ${{ needs.setup-and-tag.outputs.tag_name }}
-          files: artifacts/**/*.zip
+          files: artifacts/**/*
           generate_release_notes: false
           body: |
             - **Mihomo**: `v${{ needs.build-windows.outputs.mihomo_version }}`
