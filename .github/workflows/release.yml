@@ -19,12 +19,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Configure Git User
+      - name: Configure git user
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Generate and Push Timestamp Tag
+      - name: Generate and push timestamp tag
         id: tagging
         run: |
           TIMESTAMP_TAG="$(date +%s)"
@@ -54,7 +54,10 @@ jobs:
     permissions:
       contents: read
     steps:
-      - name: Upload Raw Artifacts
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Upload raw artifacts
         uses: actions/upload-artifact@v4
         with:
           name: raw-artifacts

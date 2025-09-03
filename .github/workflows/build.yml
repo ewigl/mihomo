@@ -49,7 +49,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Create Directory Structure
+      - name: Create directory structure
         run: |
           if [[ "${{ inputs.platform }}" == "android" ]]; then
             mkdir -p staging-android/bin/xclash
@@ -103,7 +103,7 @@ jobs:
           rm -rf staging_zashboard_temp/
           rm zashboard.zip
 
-      - name: Process Mihomo and Set Versions
+      - name: Process Mihomo and set versions
         id: set_versions
         run: |
           LATEST_MIHOMO_RELEASE_JSON=$(curl -s https://api.github.com/repos/${{ env.MIHOMO_REPO }}/releases/latest)
