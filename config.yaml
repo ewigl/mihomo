@@ -14,7 +14,7 @@ tcp-concurrent: true
 external-controller: :9090
 external-ui: zashboard
 external-ui-url: "https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages-no-fonts.zip"
-secret: 998486
+
 profile:
   store-selected: true
   store-fake-ip: true
