@@ -96,7 +96,7 @@ jobs:
           fi
           mkdir -p "$TARGET_DIR"
 
-          curl -L https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages.zip -o zashboard.zip
+          curl -L https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages-no-fonts.zip -o zashboard.zip
           unzip -q zashboard.zip -d staging_zashboard_temp/
           EXTRACTED_ZASHBOARD_DIR=$(ls staging_zashboard_temp/ | head -n 1)
           mv staging_zashboard_temp/$EXTRACTED_ZASHBOARD_DIR/* "$TARGET_DIR"/
