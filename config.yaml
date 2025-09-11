@@ -132,6 +132,11 @@ proxy-groups:
     <<: *all-proxies
     proxies: [日本, 默认, 美国, 台湾, 香港, 狮城, ⚡ 直连]
 
+  - name: DMM
+    icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/dmm.png
+    <<: *all-proxies
+    proxies: [日本, 默认, 美国, 台湾, 香港, 狮城, ⚡ 直连]
+
   - name: EHentai
     icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/e-hentai.png
     <<: *all-proxies
@@ -207,6 +212,7 @@ proxy-groups:
         ⚡ 直连,
         Bahamut,
         DLsite,
+        DMM,
         EHentai,
         EpicGames,
         Github,
@@ -244,6 +250,10 @@ rule-providers:
   dlsite:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/dlsite.mrs"
+
+  dmm:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/dmm.mrs"
 
   ehentai:
     <<: *domain
@@ -326,6 +336,7 @@ rules:
   ## Selectable
   - RULE-SET,bahamut,Bahamut
   - RULE-SET,dlsite,DLsite
+  - RULE-SET,dmm,DMM
   - RULE-SET,ehentai,EHentai
   - RULE-SET,epicgames,EpicGames
   - RULE-SET,imgur,Imgur
