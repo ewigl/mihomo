@@ -29,11 +29,6 @@ sniffer:
       ports: [443, 8443]
     QUIC:
       ports: [443, 8443]
-  skip-domain:
-    - "+.lan"
-    - "+.local"
-  # force-domain:
-  #   - "+.google.com"
 
 tun:
   enable: true
@@ -65,9 +60,6 @@ proxy-providers:
       enable: true
       url: http://www.gstatic.com/generate_204
       interval: 86400
-    override:
-      # additional-prefix: "prefix"
-      # additional-suffix: "suffix"
 
 proxies-anchor:
   all-proxies: &all-proxies
