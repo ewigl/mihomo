@@ -173,6 +173,10 @@ proxy-groups:
     icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/steam.png
     <<: *default-proxies
 
+  - name: Supercell
+    icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/supercell.png
+    <<: *default-proxies
+
   - name: Telegram
     icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/telegram.png
     <<: *default-proxies
@@ -215,6 +219,7 @@ proxy-groups:
         Spotify,
         SteamCN,
         SteamGlobal,
+        Supercell,
         Telegram,
         YouTube,
         其他,
@@ -295,6 +300,10 @@ rule-providers:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/steam@cn.mrs"
 
+  supercell:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/supercell.mrs"
+
   telegram:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.mrs"
@@ -318,14 +327,10 @@ rule-providers:
 
 rules:
   # !Order Matters!
-  # Meta Domain Rules
-  ## Reject
-  ## Direct
-  - RULE-SET,apple,DIRECT
-  - RULE-SET,cn,DIRECT
-  - RULE-SET,icloud,DIRECT
-  - RULE-SET,private,DIRECT
-  ## Selectable
+
+  ## Domain Rules
+
+  #### Selectable
   - RULE-SET,bahamut,Bahamut
   - RULE-SET,dlsite,DLsite
   - RULE-SET,dmm,DMM
@@ -334,23 +339,35 @@ rules:
   - RULE-SET,imgur,Imgur
   - RULE-SET,netflix,Netflix
   - RULE-SET,spotify,Spotify
+  - RULE-SET,supercell,Supercell
   - RULE-SET,telegram,Telegram
-  ### Google
+
+  ###### Google
   - RULE-SET,youtube,YouTube
   - RULE-SET,google,Google
-  ### Microsoft
+
+  ###### Microsoft
   - RULE-SET,github,Github
   - RULE-SET,microsoft,Microsoft
-  ### Steam
+
+  ###### Steam
   - RULE-SET,steam@cn,SteamCN
   - RULE-SET,steam,SteamGlobal
-  # Meta CIDR Rules
-  ## Reject
-  ## Direct
+
+  #### Direct
+  - RULE-SET,apple,DIRECT
+  - RULE-SET,cn,DIRECT
+  - RULE-SET,icloud,DIRECT
+  - RULE-SET,private,DIRECT
+
+  ## Meta CIDR Rules
+
+  #### Selectable
+  - RULE-SET,telegramcidr,Telegram,no-resolve
+
+  #### Direct
   - RULE-SET,cncidr,DIRECT,no-resolve
   - RULE-SET,privatecidr,DIRECT,no-resolve
-  ## Proxy
-  ## Selectable
-  - RULE-SET,telegramcidr,Telegram,no-resolve
-  # Others
+
+  ## Others
   - MATCH,其他
