@@ -181,6 +181,11 @@ proxy-groups:
     icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/telegram.png
     <<: *default-proxies
 
+  - name: Yandex
+    icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/yandex.png
+    <<: *all-proxies
+    proxies: [默认, 美国, 台湾, 香港, 狮城, 日本, ⚡ 直连]
+
   - name: YouTube
     icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/youtube.png
     <<: *all-proxies
@@ -221,6 +226,7 @@ proxy-groups:
         SteamGlobal,
         Supercell,
         Telegram,
+        Yandex,
         YouTube,
         其他,
       ]
@@ -308,6 +314,10 @@ rule-providers:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.mrs"
 
+  yandex:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/yandex.mrs"
+
   youtube:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs"
@@ -341,6 +351,7 @@ rules:
   - RULE-SET,spotify,Spotify
   - RULE-SET,supercell,Supercell
   - RULE-SET,telegram,Telegram
+  - RULE-SET,yandex,Yandex
 
   ###### Google
   - RULE-SET,youtube,YouTube
