@@ -1,3 +1,5 @@
+redir-port: 9797
+tproxy-port: 9898
 mixed-port: 8486
 
 mode: rule
