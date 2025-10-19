@@ -71,6 +71,7 @@ jobs:
             find . -maxdepth 1 -type f \( -name "*.bat" -o -name "*.vbs" -o -name "*.xml" -o -name "*.yaml" \) -exec cp {} "$TARGET_DIR"/ \;
           else
             find . -maxdepth 1 -type f \( -name "*.yaml" \) -exec cp {} "$TARGET_DIR"/ \;
+            cp etc/package.list.cfg staging-android/
           fi
           echo "Files copied."
 
