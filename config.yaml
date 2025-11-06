@@ -32,7 +32,7 @@ sniffer:
 
 tun:
   enable: true
-  stack: mixed
+  stack: system
   auto-route: true
   auto-redirect: true
   auto-detect-interface: true
