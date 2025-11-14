@@ -1,8 +1,7 @@
 mixed-port: 8486
-
-mode: rule
 allow-lan: true
 
+mode: rule
 log-level: warning
 
 ipv6: true
@@ -10,6 +9,7 @@ ipv6: true
 find-process-mode: always
 
 tcp-concurrent: true
+global-client-fingerprint: chrome
 
 external-controller: :9090
 external-ui: zashboard
