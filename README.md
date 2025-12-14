@@ -1,6 +1,6 @@
 ## Mihomo 配置
 
-> Windows tun 模式配置文件。[Box for Magisk](https://github.com/taamarin/box_for_magisk) 配置文件。
+> Mihomo 裸核运行配置文件，用于 Windows 和 [Box for Magisk](https://github.com/taamarin/box_for_magisk) / Root。
 >
 > 自用，仅供参考。Release 是完整配置文件，仅做备份使用。
 
