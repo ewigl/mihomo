@@ -163,6 +163,10 @@ proxy-groups:
     icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/netflix.png
     <<: *default-proxies
 
+  - name: OpenAI
+    icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/openai.png
+    <<: *default-proxies
+
   - name: Spotify
     icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/spotify.png
     <<: *default-proxies
@@ -225,6 +229,7 @@ proxy-groups:
         Imgur,
         Microsoft,
         Netflix,
+        OpenAI,
         Spotify,
         SteamCN,
         SteamGlobal,
@@ -298,6 +303,10 @@ rule-providers:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/netflix.mrs"
 
+  openai:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/openai.mrs"
+
   private:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"
@@ -356,6 +365,7 @@ rules:
   - RULE-SET,epicgames,EpicGames
   - RULE-SET,imgur,Imgur
   - RULE-SET,netflix,Netflix
+  - RULE-SET,openai,OpenAI
   - RULE-SET,spotify,Spotify
   - RULE-SET,supercell,Supercell
   - RULE-SET,telegram,Telegram
