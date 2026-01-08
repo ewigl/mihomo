@@ -1,4 +1,4 @@
-name: Release Full
+name: Release Raw Only
 
 on:
   workflow_dispatch:
@@ -32,22 +32,6 @@ jobs:
           git push origin $TIMESTAMP_TAG
           echo "tag_name=$TIMESTAMP_TAG" >> "$GITHUB_OUTPUT"
 
-  build-windows:
-    needs: setup-and-tag
-    uses: ./.github/workflows/build.yml
-    with:
-      platform: windows
-      mihomo_asset_keyword: '^mihomo-windows-amd64-v3-v.*?\\.zip$'
-      mihomo_archive_type: zip
-
-  build-android:
-    needs: setup-and-tag
-    uses: ./.github/workflows/build.yml
-    with:
-      platform: android
-      mihomo_asset_keyword: '^mihomo-android-arm64-v8-v.*?\\.gz$'
-      mihomo_archive_type: gz
-
   upload-raw:
     needs: setup-and-tag
     runs-on: ubuntu-latest
@@ -68,7 +52,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    needs: [setup-and-tag, build-windows, build-android, upload-raw]
+    needs: [setup-and-tag, upload-raw]
     steps:
       - name: Download all artifacts
         uses: actions/download-artifact@v4
@@ -83,5 +67,4 @@ jobs:
           files: artifacts/**/*
           generate_release_notes: false
           body: |
-            - **Mihomo**: `v${{ needs.build-windows.outputs.mihomo_version }}`
-            - **Zashboard**: `v${{ needs.build-windows.outputs.zashboard_version }}`
+            - Raw configuration file only.
