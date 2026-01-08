@@ -242,6 +242,7 @@ proxy-groups:
         Telegram,
         Yandex,
         YouTube,
+        应用,
         其他,
       ]
 
