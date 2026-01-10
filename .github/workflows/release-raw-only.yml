@@ -1,0 +1,70 @@
+name: Release Raw Only
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  setup-and-tag:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      tag_name: ${{ steps.tagging.outputs.tag_name }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure git user
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Generate and push timestamp tag
+        id: tagging
+        run: |
+          TIMESTAMP_TAG="$(date +%s)"
+          git tag $TIMESTAMP_TAG
+          git push origin $TIMESTAMP_TAG
+          echo "tag_name=$TIMESTAMP_TAG" >> "$GITHUB_OUTPUT"
+
+  upload-raw:
+    needs: setup-and-tag
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Upload raw artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: raw-artifacts
+          path: |
+            config.yaml
+
+  create-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    needs: [setup-and-tag, upload-raw]
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ needs.setup-and-tag.outputs.tag_name }}
+          name: ${{ needs.setup-and-tag.outputs.tag_name }}
+          files: artifacts/**/*
+          generate_release_notes: false
+          body: |
+            - Raw configuration file only.
