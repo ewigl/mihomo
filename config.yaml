@@ -17,7 +17,6 @@ external-ui-url: "https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-p
 
 profile:
   store-selected: true
-  store-fake-ip: true
 
 sniffer:
   enable: true
