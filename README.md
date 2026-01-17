@@ -1,8 +1,10 @@
 ## Mihomo 配置
 
-> Mihomo 裸核运行配置文件，用于 Windows 和 [Box for Magisk](https://github.com/taamarin/box_for_magisk) / Root。
->
-> 自用，仅供参考。Release 是完整配置文件，仅做备份使用。
+> Mihomo 裸核运行 (tun/tproxy 模式) 配置文件，用于 Windows 和 [Box for Magisk](https://github.com/taamarin/box_for_magisk) / Root。
+
+### 使用方法
+
+https://ewigl.github.io/projects/mihomo/
 
 ### 基本信息
 
@@ -12,7 +14,3 @@
 - WEB UI 使用 [Zashboard](https://github.com/Zephyruso/zashboard) 无字体版本。
 - 分组[图标](https://github.com/ewigl/licons)来源于网络。
 - 参考：[官方文档](https://wiki.metacubex.one/config/)。
-
-### 使用方法
-
-https://ewigl.github.io/notes/posts/programming/mihomo-tun-guide/
