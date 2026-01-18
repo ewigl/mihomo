@@ -78,7 +78,7 @@ jobs:
           fi
 
           cd ..
-          rm mihomo_android.gz
+          rm "$GZ_FILE"
 
       - name: Create zip package
         id: package
