@@ -1,4 +1,4 @@
-name: Release Full
+name: Release
 
 on:
   workflow_dispatch:
@@ -8,7 +8,32 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  get-latest-versions:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    outputs:
+      mihomo_version: ${{ steps.get_versions.outputs.mihomo_version }}
+      dashboard_version: ${{ steps.get_versions.outputs.dashboard_version }}
+
+    env:
+      MIHOMO_REPO: MetaCubeX/mihomo
+      DASHBOARD_REPO: Zephyruso/zashboard
+
+    steps:
+      - name: Get latest versions
+        id: get_versions
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          MIHOMO_V=$(gh release view -R ${{ env.MIHOMO_REPO }} --json tagName --template '{{.tagName}}')
+          DASHBOARD_V=$(gh release view -R ${{ env.DASHBOARD_REPO }} --json tagName --template '{{.tagName}}')
+
+          echo "mihomo_version=$MIHOMO_V" >> "$GITHUB_OUTPUT"
+          echo "dashboard_version=$DASHBOARD_V" >> "$GITHUB_OUTPUT"
+
   setup-and-tag:
+    needs: get-latest-versions
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -19,34 +44,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Configure git user
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
       - name: Generate and push timestamp tag
         id: tagging
         run: |
           TIMESTAMP_TAG="$(date +%s)"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
           git tag $TIMESTAMP_TAG
           git push origin $TIMESTAMP_TAG
+
           echo "tag_name=$TIMESTAMP_TAG" >> "$GITHUB_OUTPUT"
-
-  build-windows:
-    needs: setup-and-tag
-    uses: ./.github/workflows/build.yml
-    with:
-      platform: windows
-      mihomo_asset_keyword: '^mihomo-windows-amd64-v3-v.*?\\.zip$'
-      mihomo_archive_type: zip
-
-  build-android:
-    needs: setup-and-tag
-    uses: ./.github/workflows/build.yml
-    with:
-      platform: android
-      mihomo_asset_keyword: '^mihomo-android-arm64-v8-v.*?\\.gz$'
-      mihomo_archive_type: gz
 
   upload-raw:
     needs: setup-and-tag
@@ -56,6 +65,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.setup-and-tag.outputs.tag_name }}
 
       - name: Upload raw artifacts
         uses: actions/upload-artifact@v4
@@ -64,24 +75,48 @@ jobs:
           path: |
             config.yaml
 
+  build-windows:
+    needs: [get-latest-versions, setup-and-tag]
+    uses: ./.github/workflows/build-windows.yml
+    with:
+      mihomo_version: ${{ needs.get-latest-versions.outputs.mihomo_version }}
+      dashboard_version: ${{ needs.get-latest-versions.outputs.dashboard_version }}
+      tag: ${{ needs.setup-and-tag.outputs.tag_name }}
+
+  build-android:
+    needs: [get-latest-versions, setup-and-tag]
+    uses: ./.github/workflows/build-android.yml
+    with:
+      mihomo_version: ${{ needs.get-latest-versions.outputs.mihomo_version }}
+      dashboard_version: ${{ needs.get-latest-versions.outputs.dashboard_version }}
+      tag: ${{ needs.setup-and-tag.outputs.tag_name }}
+
   create-release:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    needs: [setup-and-tag, build-windows, build-android, upload-raw]
+    needs:
+      [
+        get-latest-versions,
+        setup-and-tag,
+        upload-raw,
+        build-windows,
+        build-android,
+      ]
     steps:
       - name: Download all artifacts
         uses: actions/download-artifact@v4
         with:
           path: artifacts
+          merge-multiple: true
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ needs.setup-and-tag.outputs.tag_name }}
-          name: ${{ needs.setup-and-tag.outputs.tag_name }}
+          name: Release ${{ needs.setup-and-tag.outputs.tag_name }}
           files: artifacts/**/*
           generate_release_notes: false
           body: |
-            - **Mihomo**: `v${{ needs.build-windows.outputs.mihomo_version }}`
-            - **Zashboard**: `v${{ needs.build-windows.outputs.zashboard_version }}`
+            - **Mihomo**: `${{ needs.get-latest-versions.outputs.mihomo_version }}`
+            - **Zashboard**: `${{ needs.get-latest-versions.outputs.dashboard_version }}`

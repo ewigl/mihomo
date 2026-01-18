@@ -1,0 +1,95 @@
+name: Build for Windows
+
+on:
+  workflow_call:
+    inputs:
+      mihomo_version:
+        description: Mihomo version.
+        required: true
+        type: string
+      dashboard_version:
+        description: Dashboard version.
+        required: true
+        type: string
+      tag:
+        description: Tag name.
+        required: true
+        type: string
+      mihomo_asset_keyword:
+        description: Keyword to match mihomo windows asset.
+        required: false
+        default: mihomo-windows-amd64-v3-v*.zip
+        type: string
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    env:
+      MIHOMO_REPO: MetaCubeX/mihomo
+      DASHBOARD_REPO: Zephyruso/zashboard
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag }}
+
+      - name: Prepare staging directory
+        run: |
+          mkdir -p staging-windows/ui
+
+          find . -maxdepth 1 -type f \( -name "*.bat" -o -name "*.vbs" -o -name "*.xml" -o -name "*.yaml" \) -exec cp {} staging-windows/ \;
+
+      - name: Download and extract dashboard
+        run: |
+
+          curl -L https://github.com/${{ env.DASHBOARD_REPO }}/archive/refs/heads/gh-pages-no-fonts.zip -o ui.zip
+          unzip -q ui.zip -d ui_temp/
+
+          mv ui_temp/*/* staging-windows/ui/
+          rm -rf ui_temp/ ui.zip
+
+      - name: Download and process Mihomo
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release download ${{ inputs.mihomo_version }} \
+            -R ${{ env.MIHOMO_REPO }} \
+            -p "${{ inputs.mihomo_asset_keyword }}" \
+            --output mihomo_win.zip
+
+          unzip -q mihomo_win.zip -d staging-windows/
+
+          cd staging-windows
+
+          EXE_FILE=$(ls mihomo-*.exe | head -n 1)
+
+          if [ -n "$EXE_FILE" ]; then
+            mv "$EXE_FILE" mihomo.exe
+          else
+            echo "Error: Mihomo executable not found!"
+            exit 1
+          fi
+
+          cd ..
+          rm mihomo_win.zip
+
+      - name: Create zip package
+        id: package
+        run: |
+          M_VER=$(echo "${{ inputs.mihomo_version }}" | sed 's/^v//')
+          D_VER=$(echo "${{ inputs.dashboard_version }}" | sed 's/^v//')
+          FINAL_NAME="windows-m${M_VER}-z${D_VER}.zip"
+
+          cd staging-windows
+          zip -r "../$FINAL_NAME" .
+          echo "file_name=$FINAL_NAME" >> "$GITHUB_OUTPUT"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-package
+          path: ${{ steps.package.outputs.file_name }}
