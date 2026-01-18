@@ -40,8 +40,7 @@ jobs:
       - name: Prepare staging directory
         run: |
           mkdir -p staging-android/bin/xclash
-          mkdir -p staging-android/clash
-          mkdir -p staging-android/ui
+          mkdir -p staging-android/clash/ui
 
           find . -maxdepth 1 -type f \( -name "*.yaml" \) -exec cp {} staging-android/clash/ \;
           cp etc/package.list.cfg staging-android/
@@ -51,7 +50,7 @@ jobs:
           curl -L https://github.com/${{ env.DASHBOARD_REPO }}/archive/refs/heads/gh-pages-no-fonts.zip -o ui.zip
           unzip -q ui.zip -d ui_temp/
 
-          mv ui_temp/*/* staging-android/ui/
+          mv ui_temp/*/* staging-android/clash/ui/
           rm -rf ui_temp/ ui.zip
 
       - name: Download and process Mihomo
