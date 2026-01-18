@@ -12,7 +12,7 @@ tcp-concurrent: true
 global-client-fingerprint: chrome
 
 external-controller: :9090
-external-ui: zashboard
+external-ui: ui
 external-ui-url: "https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages-no-fonts.zip"
 
 profile:
