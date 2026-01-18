@@ -77,9 +77,6 @@ jobs:
             exit 1
           fi
 
-          cd ..
-          rm "$GZ_FILE"
-
       - name: Create zip package
         id: package
         run: |
