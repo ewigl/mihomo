@@ -61,13 +61,14 @@ jobs:
           gh release download ${{ inputs.mihomo_version }} \
             -R ${{ env.MIHOMO_REPO }} \
             -p "${{ inputs.mihomo_asset_keyword }}" \
-            --output mihomo_android.gz
 
-          gunzip -q mihomo_android.gz -d staging-android/
+          GZ_FILE=$(ls *.gz | head -n 1)
+
+          gunzip -q "$GZ_FILE"
 
           cd staging-android
 
-          BIN_FILE=$(ls mihomo-android-* | head -n 1)
+          BIN_FILE=$(ls ../mihomo-android-* | head -n 1)
 
           if [ -n "$BIN_FILE" ]; then
             mv "$BIN_FILE" bin/xclash/mihomo
