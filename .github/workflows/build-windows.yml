@@ -65,7 +65,7 @@ jobs:
 
           cd staging-windows
 
-          EXE_FILE=$(ls mihomo-*.exe | head -n 1)
+          EXE_FILE=$(ls mihomo-windows-*.exe | head -n 1)
 
           if [ -n "$EXE_FILE" ]; then
             mv "$EXE_FILE" mihomo.exe
