@@ -1,5 +1,7 @@
 proxies/
 rules/
+ui/
 zashboard/
 cache.db
+mihomo.exe
 mihomo-windows-amd64.exe

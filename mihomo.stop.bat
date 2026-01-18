@@ -2,7 +2,7 @@
 %1 mshta vbscript:CreateObject("Shell.Application").ShellExecute("cmd.exe","/c %~s0 ::","","runas",1)(window.close)&&exit
 cd /d "%~dp0"
 
-SET PROCESS_NAME=mihomo-windows-amd64.exe
+SET PROCESS_NAME=mihomo.exe
 
 tasklist | findstr "%PROCESS_NAME%"
 
