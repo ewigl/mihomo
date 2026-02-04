@@ -9,7 +9,6 @@ ipv6: true
 find-process-mode: always
 
 tcp-concurrent: true
-global-client-fingerprint: chrome
 
 external-controller: :9090
 external-ui: ui
