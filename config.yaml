@@ -138,7 +138,7 @@ proxy-groups:
     <<: *all-proxies
     proxies: [⚡ 直连, 默认, 美国, 台湾, 香港, 狮城, 日本]
 
-  - name: Github
+  - name: GitHub
     icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/github.png
     <<: *all-proxies
     proxies: [Microsoft, 默认, 美国, 台湾, 香港, 狮城, 日本, ⚡ 直连]
@@ -224,7 +224,7 @@ proxy-groups:
         DMM,
         EHentai,
         EpicGames,
-        Github,
+        GitHub,
         Gemini,
         Google,
         Imgur,
@@ -378,7 +378,7 @@ rules:
   - RULE-SET,google,Google
 
   ###### Microsoft
-  - RULE-SET,github,Github
+  - RULE-SET,github,GitHub
   - RULE-SET,microsoft,Microsoft
 
   ###### Steam
