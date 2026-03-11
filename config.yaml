@@ -19,9 +19,6 @@ profile:
 
 sniffer:
   enable: true
-  force-dns-mapping: true
-  parse-pure-ip: true
-  override-destination: true
   sniff:
     HTTP:
       ports: [80, 8080-8880]
@@ -60,6 +57,14 @@ proxy-providers:
       enable: true
       url: http://www.gstatic.com/generate_204
       interval: 86400
+
+  # Subscription:
+  #   type: http
+  #   url: http://192.168.8.1:8848/proxy-providers.yaml
+  #   health-check:
+  #     enable: true
+  #     url: http://www.gstatic.com/generate_204
+  #     interval: 86400
 
 proxies-anchor:
   all-proxies: &all-proxies
@@ -358,19 +363,11 @@ rules:
 
   ## Domain Rules
 
-  #### Selectable
-  - RULE-SET,bahamut,Bahamut
-  - RULE-SET,dlsite,DLsite
-  - RULE-SET,dmm,DMM
-  - RULE-SET,ehentai,EHentai
-  - RULE-SET,epicgames,EpicGames
-  - RULE-SET,imgur,Imgur
-  - RULE-SET,netflix,Netflix
-  - RULE-SET,openai,OpenAI
-  - RULE-SET,spotify,Spotify
-  - RULE-SET,supercell,Supercell
-  - RULE-SET,telegram,Telegram
-  - RULE-SET,yandex,Yandex
+  #### Direct
+  - RULE-SET,private,DIRECT
+  - RULE-SET,cn,DIRECT
+  - RULE-SET,apple,DIRECT
+  - RULE-SET,icloud,DIRECT
 
   ###### Google
   - RULE-SET,google-gemini,Gemini
@@ -385,20 +382,28 @@ rules:
   - RULE-SET,steam@cn,SteamCN
   - RULE-SET,steam,SteamGlobal
 
-  #### Direct
-  - RULE-SET,apple,DIRECT
-  - RULE-SET,cn,DIRECT
-  - RULE-SET,icloud,DIRECT
-  - RULE-SET,private,DIRECT
+  #### Select
+  - RULE-SET,bahamut,Bahamut
+  - RULE-SET,dlsite,DLsite
+  - RULE-SET,dmm,DMM
+  - RULE-SET,ehentai,EHentai
+  - RULE-SET,epicgames,EpicGames
+  - RULE-SET,imgur,Imgur
+  - RULE-SET,netflix,Netflix
+  - RULE-SET,openai,OpenAI
+  - RULE-SET,spotify,Spotify
+  - RULE-SET,supercell,Supercell
+  - RULE-SET,telegram,Telegram
+  - RULE-SET,yandex,Yandex
 
   ## CIDR Rules
 
-  #### Selectable
-  - RULE-SET,telegramcidr,Telegram,no-resolve
-
   #### Direct
-  - RULE-SET,cncidr,DIRECT,no-resolve
   - RULE-SET,privatecidr,DIRECT,no-resolve
+  - RULE-SET,cncidr,DIRECT,no-resolve
+
+  #### Select
+  - RULE-SET,telegramcidr,Telegram,no-resolve
 
   ## Others
   - MATCH,其他
