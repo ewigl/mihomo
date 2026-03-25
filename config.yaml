@@ -56,14 +56,6 @@ proxy-providers:
       url: http://www.gstatic.com/generate_204
       interval: 86400
 
-  # Subscription:
-  #   type: http
-  #   url: http://192.168.8.1:8848/proxy-providers.yaml
-  #   health-check:
-  #     enable: true
-  #     url: http://www.gstatic.com/generate_204
-  #     interval: 86400
-
 proxies-anchor:
   all-proxies: &all-proxies
     type: select
@@ -203,10 +195,19 @@ proxy-groups:
     proxies: [Google, 默认, 美国, 台湾, 香港, 狮城, 日本, ⚡ 直连]
 
   # 自定义
+  - name: IDM
+    icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/idm.png
+    <<: *default-proxies
+
   - name: NRftW
     icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/nrftw.png
     <<: *all-proxies
     proxies: [香港, 默认, 美国, 台湾, 狮城, 日本, ⚡ 直连]
+
+  - name: qBittorrent
+    icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/qbittorrent.png
+    <<: *all-proxies
+    proxies: [⚡ 直连, 默认, 美国, 台湾, 香港, 狮城, 日本]
 
   # 其他
   - name: 其他
@@ -236,11 +237,13 @@ proxy-groups:
         GitHub,
         Gemini,
         Google,
+        IDM,
         Imgur,
         Microsoft,
         Netflix,
         NRftW,
         OpenAI,
+        qBittorrent,
         Spotify,
         SteamCN,
         SteamGlobal,
@@ -363,7 +366,14 @@ rule-providers:
     <<: *cidr
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat//meta/geo/geoip/telegram.mrs"
 
-  # 自定义规则集
+  # 自定规则集
+  idm:
+    type: inline
+    behavior: classical
+    interval: 86400
+    payload:
+      - PROCESS-NAME,IDMan.exe
+
   nrftw:
     type: inline
     behavior: classical
@@ -371,17 +381,34 @@ rule-providers:
     payload:
       - PROCESS-NAME,NoRestForTheWicked.exe
 
+sub-rules:
+  # qBittorrent: 特定链接代理，其他链接由 qBittorrent Selector 决定。
+  q_bittorrent:
+    # 检查更新
+    - DOMAIN-SUFFIX,fosshub.com,默认
+    # RSS 源等
+    - DOMAIN-SUFFIX,mikanani.me,默认
+    # Trackers 更新
+    - RULE-SET,github,GitHub
+    # 其他
+    - MATCH,qBittorrent
+
 rules:
-  # 按顺序匹配! #
+  # 自定规则
+  ## 选择
+  ### 恶意不息
+  - RULE-SET,nrftw,NRftW
+  ### Internet Download Manager
+  - RULE-SET,idm,IDM
+  ### qBittorrent
+  - SUB-RULE,(PROCESS-NAME,qbittorrent.exe),q_bittorrent
 
   # 域名规则
-
   ## 直连
   - RULE-SET,private,DIRECT
   - RULE-SET,cn,DIRECT
   - RULE-SET,apple,DIRECT
   - RULE-SET,icloud,DIRECT
-
   ## 选择
   ### Google
   - RULE-SET,google-gemini,Gemini
@@ -408,18 +435,11 @@ rules:
   - RULE-SET,yandex,Yandex
 
   # IP 规则
-
   ## 直连
   - RULE-SET,privatecidr,DIRECT,no-resolve
   - RULE-SET,cncidr,DIRECT,no-resolve
-
   ## 选择
   - RULE-SET,telegramcidr,Telegram,no-resolve
-
-  # 自定义规则
-
-  ## 选择
-  - RULE-SET,nrftw,NRftW
 
   # 其他
   - MATCH,其他
