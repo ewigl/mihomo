@@ -53,7 +53,7 @@ proxy-providers:
     path: proxies/local.yaml
     health-check:
       enable: true
-      url: http://www.gstatic.com/generate_204
+      url: https://cp.cloudflare.com/generate_204
       interval: 86400
 
 proxies-anchor:
