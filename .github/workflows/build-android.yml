@@ -42,7 +42,7 @@ jobs:
           mkdir -p staging-android/bin/xclash
           mkdir -p staging-android/clash/ui
 
-          find . -maxdepth 1 -type f \( -name "*.yaml" \) -exec cp {} staging-android/clash/ \;
+          cp config.yaml staging-android/
           cp etc/package.list.cfg staging-android/
 
       - name: Download and extract Zashboard
