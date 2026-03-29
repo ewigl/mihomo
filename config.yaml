@@ -10,7 +10,7 @@ find-process-mode: always
 
 tcp-concurrent: true
 
-external-controller: :9090
+external-controller: localhost:9090
 external-ui: ui
 external-ui-url: "https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages-no-fonts.zip"
 
@@ -219,40 +219,7 @@ proxy-groups:
     icon: https://raw.githubusercontent.com/ewigl/licons/refs/heads/main/logos/global.png
     type: select
     include-all-providers: true
-    proxies:
-      [
-        默认,
-        自动选择,
-        美国,
-        台湾,
-        香港,
-        狮城,
-        日本,
-        ⚡ 直连,
-        Bahamut,
-        DLsite,
-        DMM,
-        EHentai,
-        EpicGames,
-        GitHub,
-        Gemini,
-        Google,
-        IDM,
-        Imgur,
-        Microsoft,
-        Netflix,
-        NRftW,
-        OpenAI,
-        qBittorrent,
-        Spotify,
-        SteamCN,
-        SteamGlobal,
-        Supercell,
-        Telegram,
-        Yandex,
-        YouTube,
-        其他,
-      ]
+    proxies: [默认, 自动选择, 美国, 台湾, 香港, 狮城, 日本, ⚡ 直连]
 
 rule-anchor:
   domain: &domain { type: http, interval: 86400, behavior: domain, format: mrs }
